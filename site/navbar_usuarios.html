@@ -1,0 +1,296 @@
+<head>
+	<meta charset="utf-8">
+	<title>Comida de Vizinho</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="./css/normalize.css">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/theme.css">
+	<link rel="stylesheet" href="./css/animate.css">
+	<link rel="stylesheet" href="./css/cdv_home.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Fontes -->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<!-- JS -->
+	<script src="./js/jquery.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/scrollReveal.min.js"></script>
+	<script src="./js/jquery.cookie.js"></script>
+	<script src="./js/validation_cdv.js"></script>
+	<script src="./js/jquery.mask.js"></script>
+	<script src="./js/validator.min.js"></script>
+
+	<!-- Scroll -->
+	<script src="./js/smoothscroll.js"></script>
+	<script src="./js/mousescroll.js"></script>
+
+	<!-- Anchor -->
+	<script src="./js/jquery.easing.min.js"></script>
+	<script src="./js/jquery.plusanchor.min.js"></script>
+
+</head>
+
+<body>
+	<div class="bg_corpo">
+		<header class="">
+			<nav class="navbar navbar-default nav_cdv">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed btn-danger" data-toggle="collapse" data-target="#menu_cdv" aria-expanded="true">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand logomarca animated pulse" href="https://comidadevizinho.com.br/home">
+							<img class="img-responsive" src="https://comidadevizinho.com.br/assets/images/logo.png" alt="Comida de Vizinho" title="Comida de Vizinho">
+							<span>Comida de Vizinho</span>
+						</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="menu_cdv">
+
+						
+						<ul id="client_logged" class="nav navbar-nav navbar-right">
+
+							<li><a href="https://comidadevizinho.com.br/pesquisa_refeicoes/refeicoes_proximas">Pesquisar Pratos <i class="fa fa-search"></i></a></li>
+							<li role="presentation" class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Mensagem <span class="badge">2</span></a>
+								<ul class="dropdown-menu chat" role="menu">
+									<li class="mensagem">
+										<a href="#">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/12063788_10205286050250524_6033438351895390256_n.jpg?oh=ba5832e00e9c0170e5ac968e1a9d93e3&amp;oe=574B1EBF&amp;__gda__=1469411687_c5bde1dcb24f32f0c052109836c9154b"></span>
+													</div>
+												</li>
+												<li class="nome">
+													<span>Glauro Juliani</span>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Humm.. entendi!</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-check-square"></i></span>
+													</div>
+												</li>
+											</ul>
+										</a>
+									</li>
+
+									<li class="divider"></li>
+
+									<li class="mensagem">
+										<a href="#">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c151.52.657.657/s160x160/1069214_690818814267666_1886751670_n.jpg?oh=2ed6f35b039df714ea74b0c3d3ca39ac&oe=577B2D7A&__gda__=1468908082_f4b7f83a0f0441abea37996b6c3bbef5"></span>
+													</div>
+												</li>
+												<li class="nome">
+													<span>Flávio Henrique</span>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Quero pedir isto amanhã!</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-square-o"></i></span>
+													</div>
+												</li>
+											</ul>
+										</a>
+									</li>
+									
+									<li class="divider"></li>
+									<li>
+										<a class="text-center" href="comunicacao_pagina.html"><i class="fa fa-envelope"></i> Ver Todas</a>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#">Mensagem</a></li>
+
+							<li role="presentation" class="dropdown">
+								<!--<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><span id="nome"></span> <span id="img_profile"></span></a>-->
+								<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" style="">
+									<!--<span id="nome">nao funfo</span> <span id="img_profile"><img src=""></span>-->
+									<span id="nome">Glauro</span> <span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/12063788_10205286050250524_6033438351895390256_n.jpg?oh=ba5832e00e9c0170e5ac968e1a9d93e3&amp;oe=574B1EBF&amp;__gda__=1469411687_c5bde1dcb24f32f0c052109836c9154b"></span>
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Alterar Dados</a></li>
+									<li><a href="#">Perfil</a></li>
+									<li><a href="#">Meus Pedidos</a></li>
+									<li> <a href="https://comidadevizinho.com.br/usuarios/logout_facebook?next=https://logouturl&amp;access_token=CAAX3Wu9jgh0BAF6B796NfvjNxJ0qMhauuzhZCWn3tgMWzFnzeZCqBEWq7zCCyxheWMZAh9K76f56cPZCWcfXpQV3tTcAZAqq2ZBi21rn23ZBVn1Uj9cQMnOtmVO1IzG0QGJ7i74PtE1ZBAVAaEZARftLxfNAuagkY7FqZAZBm6YriWqQ0ZAzftodhyVX">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+			</nav>
+
+
+			<div id="float_search" class="floating_search collapse">				
+				<div class="container-fluid">
+					<div class="row text-center">
+						<div class="col-sm-4 pull-right">
+							<form>
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Digite o nome da refeição...">
+									<span class="input-group-btn">
+										<button class="btn btn-md btn-success" type="button"><i class="fa fa-search"></i> Buscar</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div><!-- end floating search -->
+		</header><!-- /header -->
+
+		<div style="height: 120px">
+			
+		</div>
+
+		<header class="">
+		<nav class="navbar navbar-default nav_logged">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed btn-danger" data-toggle="collapse" data-target="#menu_cdv" aria-expanded="true">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand logomarca animated pulse" href="https://comidadevizinho.com.br/home">
+							<img class="img-responsive" src="https://comidadevizinho.com.br/assets/images/logo_red.png" alt="Comida de Vizinho" title="Comida de Vizinho">
+							<span>Comida de Vizinho</span>
+						</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="menu_cdv">
+
+						
+						<ul id="client_logged" class="nav navbar-nav navbar-right">
+
+							<li><a href="https://comidadevizinho.com.br/pesquisa_refeicoes/refeicoes_proximas">Pesquisar Pratos <i class="fa fa-search"></i></a></li>
+							<li role="presentation" class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Mensagem <span class="badge">2</span></a>
+								<ul class="dropdown-menu chat" role="menu">
+									<li class="mensagem">
+										<a href="#">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/12063788_10205286050250524_6033438351895390256_n.jpg?oh=ba5832e00e9c0170e5ac968e1a9d93e3&amp;oe=574B1EBF&amp;__gda__=1469411687_c5bde1dcb24f32f0c052109836c9154b"></span>
+													</div>
+												</li>
+												<li class="nome">
+													<span>Glauro Juliani</span>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Humm.. entendi!</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-check-square"></i></span>
+													</div>
+												</li>
+											</ul>
+										</a>
+									</li>
+
+									<li class="divider"></li>
+
+									<li class="mensagem">
+										<a href="#">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c151.52.657.657/s160x160/1069214_690818814267666_1886751670_n.jpg?oh=2ed6f35b039df714ea74b0c3d3ca39ac&oe=577B2D7A&__gda__=1468908082_f4b7f83a0f0441abea37996b6c3bbef5"></span>
+													</div>
+												</li>
+												<li class="nome">
+													<span>Flávio Henrique</span>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Quero pedir isto amanhã!</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-square-o"></i></span>
+													</div>
+												</li>
+											</ul>
+										</a>
+									</li>
+									
+									<li class="divider"></li>
+									<li>
+									<a class="text-center" href="comunicacao_pagina.html"><i class="fa fa-envelope"></i> Ver Todas</a>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#">Mensagem</a></li>
+
+							<li role="presentation" class="dropdown">
+								<!--<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><span id="nome"></span> <span id="img_profile"></span></a>-->
+								<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" style="">
+									<!--<span id="nome">nao funfo</span> <span id="img_profile"><img src=""></span>-->
+									<span id="nome">Glauro</span> <span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/12063788_10205286050250524_6033438351895390256_n.jpg?oh=ba5832e00e9c0170e5ac968e1a9d93e3&amp;oe=574B1EBF&amp;__gda__=1469411687_c5bde1dcb24f32f0c052109836c9154b"></span>
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Alterar Dados</a></li>
+									<li><a href="#">Perfil</a></li>
+									<li><a href="#">Meus Pedidos</a></li>
+									<li> <a href="https://comidadevizinho.com.br/usuarios/logout_facebook?next=https://logouturl&amp;access_token=CAAX3Wu9jgh0BAF6B796NfvjNxJ0qMhauuzhZCWn3tgMWzFnzeZCqBEWq7zCCyxheWMZAh9K76f56cPZCWcfXpQV3tTcAZAqq2ZBi21rn23ZBVn1Uj9cQMnOtmVO1IzG0QGJ7i74PtE1ZBAVAaEZARftLxfNAuagkY7FqZAZBm6YriWqQ0ZAzftodhyVX">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+			</nav>
+			<div id="float_search" class="floating_search collapse">				
+				<div class="container-fluid">
+					<div class="row text-center">
+						<div class="col-sm-4 pull-right">
+							<form novalidate="true">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Digite o nome da refeição...">
+									<span class="input-group-btn">
+										<button class="btn btn-md btn-success" type="button"><i class="fa fa-search"></i> Buscar</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div><!-- end floating search -->
+		</header>
+
+
+
+	</body>

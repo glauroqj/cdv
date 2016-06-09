@@ -1,0 +1,599 @@
+<head>
+	<meta charset="utf-8">
+	<title>Comida de Vizinho</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="./css/normalize.css">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/theme.css">
+	<link rel="stylesheet" href="./css/animate.css">
+	<link rel="stylesheet" href="./css/cdv_home.css">
+	<link rel="stylesheet" href="./css/fontawesome-stars.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Fontes -->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<!-- JS -->
+	<script src="./js/jquery.js"></script>
+	<script src="./js/bootstrap.min.js" async></script>
+	<script src="./js/scrollReveal.min.js" async></script>
+	<script src="./js/jquery.cookie.js" async></script>
+	<script src="./js/jquery.mask.js"></script>
+	<script src="./js/validator.min.js"></script>
+	<script src="./js/jquery-ui.js" async></script>
+	<script src="./js/jquery.barrating.js" async></script>
+	<!-- Scroll -->
+	<script src="./js/smoothscroll.js" async></script>
+	<script src="./js/mousescroll.js" async></script>
+
+	<!-- Anchor -->
+	<script src="./js/jquery.easing.min.js"></script>
+	<script src="./js/jquery.plusanchor.min.js"></script>
+
+	<!-- Main JS -->
+	<script src="./js/validation_cdv.js" async></script>
+
+</head>
+
+<body>
+	<div>
+		<header class="">
+			<nav class="navbar navbar-default nav_logged">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed btn-danger" data-toggle="collapse" data-target="#menu_cdv" aria-expanded="true">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand logomarca animated pulse" href="https://comidadevizinho.com.br/home">
+							<img class="img-responsive" src="https://comidadevizinho.com.br/assets/images/logo_red.png" alt="Comida de Vizinho" title="Comida de Vizinho">
+							<span>Comida de Vizinho</span>
+						</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="menu_cdv">
+
+						
+						<ul id="client_logged" class="nav navbar-nav navbar-right">
+
+							<li><a href="https://comidadevizinho.com.br/pesquisa_refeicoes/refeicoes_proximas">Pesquisar Pratos <i class="fa fa-search"></i></a></li>
+							<li role="presentation" class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Mensagem <span class="badge">2</span></a>
+								<ul class="dropdown-menu chat" role="menu">
+									<li id="1" class="mensagem">
+										<a href="#" id="">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/12063788_10205286050250524_6033438351895390256_n.jpg?oh=ba5832e00e9c0170e5ac968e1a9d93e3&amp;oe=574B1EBF&amp;__gda__=1469411687_c5bde1dcb24f32f0c052109836c9154b"></span>
+													</div>
+												</li>
+												<li class="nome">
+													<span>Glauro Juliani</span>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Humm.. entendi!</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-check-square"></i></span>
+													</div>
+												</li>
+											</ul>
+										</a>
+									</li>
+
+									<li class="divider"></li>
+
+									<li id="2" class="mensagem">
+										<a href="#" id="">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c151.52.657.657/s160x160/1069214_690818814267666_1886751670_n.jpg?oh=2ed6f35b039df714ea74b0c3d3ca39ac&amp;oe=577B2D7A&amp;__gda__=1468908082_f4b7f83a0f0441abea37996b6c3bbef5"></span>
+													</div>
+												</li>
+												<li class="nome">
+													<span>Flávio Henrique</span>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Quero pedir isto amanhã!</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-square-o"></i></span>
+													</div>
+												</li>
+											</ul>
+										</a>
+									</li>
+									
+									<li class="divider"></li>
+									<li>
+										<a class="text-center" href="comunicacao_pagina.html"><i class="fa fa-envelope"></i> Ver Todas</a>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#">Mensagem</a></li>
+
+							<li role="presentation" class="dropdown">
+								<!--<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><span id="nome"></span> <span id="img_profile"></span></a>-->
+								<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" style="">
+									<!--<span id="nome">nao funfo</span> <span id="img_profile"><img src=""></span>-->
+									<span id="nome">Glauro</span> <span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/12063788_10205286050250524_6033438351895390256_n.jpg?oh=ba5832e00e9c0170e5ac968e1a9d93e3&amp;oe=574B1EBF&amp;__gda__=1469411687_c5bde1dcb24f32f0c052109836c9154b"></span>
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Alterar Dados</a></li>
+									<li><a href="#">Perfil</a></li>
+									<li><a href="#">Meus Pedidos</a></li>
+									<li> <a href="https://comidadevizinho.com.br/usuarios/logout_facebook?next=https://logouturl&amp;access_token=CAAX3Wu9jgh0BAF6B796NfvjNxJ0qMhauuzhZCWn3tgMWzFnzeZCqBEWq7zCCyxheWMZAh9K76f56cPZCWcfXpQV3tTcAZAqq2ZBi21rn23ZBVn1Uj9cQMnOtmVO1IzG0QGJ7i74PtE1ZBAVAaEZARftLxfNAuagkY7FqZAZBm6YriWqQ0ZAzftodhyVX">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+			</nav>
+			<div id="float_search" class="floating_search collapse">				
+				<div class="container-fluid">
+					<div class="row text-center">
+						<div class="col-sm-4 pull-right">
+							<form novalidate="true">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Digite o nome da refeição...">
+									<span class="input-group-btn">
+										<button class="btn btn-md btn-success" type="button"><i class="fa fa-search"></i> Buscar</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div><!-- end floating search -->
+		</header>
+	</div> <!-- end bg -->
+
+	<div class="comunicacao">
+		<div class="container">
+			<div class="row">
+
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="col-lg-4">
+							<div class="box">
+								<div class="topo">
+									<h4><i class="fa fa-envelope"></i> Mensagens</h4>
+								</div>
+								<div class="busca">
+									<form>
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="Pesquisar...">
+											<span class="input-group-btn">
+												<button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+											</span>
+										</div>
+									</form>
+								</div>
+								<div class="conversas">
+									<div class="list-group">
+										<a href="#" class="list-group-item mensagem_1">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpt1/v/t1.0-9/10991335_10205295065512397_1842075013970706943_n.jpg?oh=c426b86b60764d5d7f0f7bdc2e100570&oe=5780F3EA&__gda__=1468718051_8adebd804faf76b28c50e92d495cd2de"></span>
+													</div>
+												</li>
+												<li>
+													<div class="nome">
+														<span>Pedro Junio</span>
+													</div>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Que comida interessante, me fala mais dela.</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-check-square"></i></span>
+													</div>
+													<div class="horario">
+														<span>12:40 pm</span>
+													</div>
+												</li>
+											</ul>
+										</a>
+
+										<a href="#" class="list-group-item mensagem_2">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p320x320/12063788_10205286050250524_6033438351895390256_n.jpg?oh=ba5832e00e9c0170e5ac968e1a9d93e3&amp;oe=574B1EBF&amp;__gda__=1469411687_c5bde1dcb24f32f0c052109836c9154b"></span>
+													</div>
+												</li>
+												<li>
+													<div class="nome">
+														<span>Glauro Juliani</span>
+													</div>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Humm... entendi!</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-check-square"></i></span>
+													</div>
+													<div class="horario">
+														<span>9:40 am</span>
+													</div>
+												</li>
+											</ul>
+										</a>
+
+
+										<a href="#" class="list-group-item mensagem_3">
+											<ul class="list-inline">
+												<li>
+													<div class="imagem">
+														<span id="img_profile"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c151.52.657.657/s160x160/1069214_690818814267666_1886751670_n.jpg?oh=2ed6f35b039df714ea74b0c3d3ca39ac&oe=577B2D7A&__gda__=1468908082_f4b7f83a0f0441abea37996b6c3bbef5"></span>
+													</div>
+												</li>
+												<li>
+													<div class="nome">
+														<span>Flávio Henrique</span>
+													</div>
+												</li>
+											</ul>
+											<ul class="list-inline">
+												<li>
+													<div class="prev_mensagem">
+														<span>Quero fazer este pedido amanhã, é possível?</span>
+													</div>
+												</li>
+												<li>
+													<div class="status">
+														<span><i class="fa fa-square-o"></i></span>
+													</div>
+													<div class="horario">
+														<span>22:40 pm</span>
+													</div>
+												</li>
+											</ul>
+										</a>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-8">
+							<div class="box_conversa">
+								<div class="topo">
+									<h4><i class="fa fa-comments-o"></i> <span>Glauro Juliani</span></h4>
+								</div>
+
+								<div class="texto_conversa">
+									<div class="list-group">
+										<div class="list-group-item">
+
+											<ul class="list-unstyled">
+												<li class="data">
+													<span>04/04/2016</span>
+												</li>
+											</ul>
+
+											<ul class="list-unstyled">
+												<li class="texto">
+													<span>Que comida interessante, me fala mais sobre?</span>
+												</li>
+												<li class="texto">
+													<span>Dois textos! Este será o maior texto. Quando atingir um certo limite a linha vai quebrar.</span>
+												</li>
+												<li class="tempo">
+													<span>12:40 am</span> <span><i class="fa fa-check-square"></i></span>
+												</li>
+											</ul>
+
+											<ul class="list-unstyled text-right">
+												<li class="resposta">
+													<span>Claro, é um ótimo prato para festas e tudo mais...</span>
+												</li>
+												<li class="tempo">
+													<span>12:50 am</span> <span><i class="fa fa-check-square"></i></span>
+												</li>
+											</ul>
+
+											<ul class="list-unstyled">
+												<li class="data">
+													<span>05/04/2016</span>
+												</li>
+											</ul>
+
+											<ul class="list-unstyled">
+												<li class="texto">
+													<span>Dois textos! Este será o maior texto. Quando atingir um certo limite a linha vai quebrar.</span>
+												</li>
+												<li class="tempo">
+													<span>12:40 am</span> <span><i class="fa fa-square-o"></i></span>
+												</li>
+											</ul>
+
+										</div><!-- list-group-item -->
+									</div>
+
+									<div class="campo_digitar">
+										<form novalidate="true">
+											<div class="input-group">
+												<input type="text" class="form-control input-lg" placeholder="Digite sua mensagem...">
+												<span class="input-group-btn">
+													<button class="btn btn-lg btn_cdv" type="submit"><i class="fa fa-paper-plane"></i></button>
+												</span>
+											</div>
+										</form>
+									</div>
+
+								</div><!-- texto comnversa -->
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div><!-- end row -->
+		</div>
+	</div>
+
+	<!-- Modal sign up -->
+	<div class="modal sign_up_modal fade" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="sign_up">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title title_modal text-center" id="sign_up"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça Seu Cadastro Agora Mesmo!</h4>
+				</div>
+				<div class="modal-body">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#client" aria-controls="client" role="tab" data-toggle="tab">Cliente</a></li>
+						<li role="presentation"><a href="#cook" aria-controls="cook" role="tab" data-toggle="tab">Cozinheiro</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+
+						<div role="tabpane1" class="tab-pane active" id="client">
+							<div class="facebook clearfix">
+								<div class="col-sm-8 col-sm-offset-2 login_facebook">
+									<button id="client_facebook" class="btn btn_facebook btn-block" onclick="login();">Cadastrar com Facebook</button>
+								</div>
+							</div>
+							<div class="modal-body clearfix">
+								<div class="text-justify">
+									<h3>Preencha os campos abaixo para se cadastrar!</h3>
+								</div>
+								<form>
+									<div class="input-group input-group-md form-group has-feedback">
+										<span class="input-group-addon"><i class="fa fa-lg fa-user"></i></span>
+										<input type="text" class="form-control" id="inputName" placeholder="Nome" aria-invalid="false" required>
+										<span class="glyphicon form-control-feedback"></span>
+									</div>
+
+									<div class="input-group input-group-md form-group has-feedback">
+										<span class="input-group-addon"><i class="fa fa-lg fa-envelope"></i></span>
+										<input type="email" class="form-control" id="inputEmail" name="email" placeholder="E-mail" aria-invalid="false" required>
+										<span class="glyphicon form-control-feedback"></span>
+									</div>
+
+									<div class="input-group input-group-md form-group has-feedback">
+										<span class="input-group-addon"><i class="fa fa-lg fa-lock"></i></span>
+										<input type="password" class="form-control" id="inputPassword" placeholder="Senha" aria-invalid="false" required>
+										<span class="glyphicon form-control-feedback"></span>
+									</div>
+
+									<div class="modal-footer">
+										<button id="clean" type="button" class="btn btn-xs btn-primary pull-left"><i class="fa fa-trash"></i> Limpar</button>
+										<button type="submit" class="btn btn_cdv"><i class="fa fa-user-plus"></i> Criar Conta</button>
+									</div>
+
+								</form>
+							</div>
+						</div>
+
+						<div role="tabpanel2" class="tab-pane clearfix" id="cook">
+							<div class="facebook clearfix">
+								<div class="col-sm-8 col-sm-offset-2 login_facebook">
+									<button id="cook_facebook" class="btn btn_facebook btn-block" onclick="login();">Cadastrar com Facebook</button>
+								</div>
+							</div>
+							<div class="modal-body">
+								<div class="col-sm-12 text-center">
+									<h3>Tem vontade de cozinhar para seus vizinhos?</h3>
+								</div>
+								<div class="col-sm-12 text-center">
+									<a href="cook.html" class="btn btn-success btn-lg btn-block"><i class="fa fa-thumbs-o-up"></i> Sim, Tenho Vontade!</a>
+								</div>
+							</div>
+						</div>
+
+					</div><!-- end tab content -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal login -->
+	<div class="modal login_modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title title_modal text-center" id="login"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça Login!</h4>
+				</div>
+				<div class="facebook clearfix">
+					<div class="col-sm-8 col-sm-offset-2 login_facebook">
+						<button id="login_facebook" class="btn btn_facebook btn-block" onclick="login();">Entrar com Facebook</button>
+					</div>
+				</div>
+				<form data-toggle="validator" role="form">
+					<div class="modal-body">
+
+						<div class="input-group input-group-md login_email form-group has-feedback">
+							<span class="input-group-addon"><i class="fa fa-lg fa-envelope-o"></i></span>
+							<input type="email" class="form-control" id="inputEmail" name="email" placeholder="e-mail" aria-invalid="false" required>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+
+						<div class="input-group input-group-md login_password form-group has-feedback">
+							<span class="input-group-addon"><i class="fa fa-lg fa-key"></i></span>
+							<input type="password" class="form-control" id="inputPassword" placeholder="*****" aria-invalid="false" required>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+
+
+					</div>
+					<div class="modal-footer">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-xs btn-info pull-left" data-toggle="collapse" data-target="#recovery_password" aria-expanded="false" aria-controls="recovery_password"><i class="fa fa-wrench"></i> Esqueceu a senha?</button>
+
+							<button type="button" class="btn btn-xs btn-warning pull-left no_account"><i class="fa fa-exclamation-circle"></i> Não tenho conta</button>
+						</div>
+						<div class="input-group-btn">
+							<button id="action" type="submit" class="btn btn-success"><i class="fa fa-lg fa-sign-in"></i> Fazer Login</button>
+						</div>
+					</div>
+				</form>
+				<div id="recovery_password" class="clearfix collapse recovery_password">
+					<div class="col-sm-8">
+						<h5>Informe seu e-mail abaixo para receber sua senha:</h5>
+						<form data-toggle="validator" role="form">
+							<div class="input-group form-group">
+								<input type="email" class="form-control" id="inputEmail" name="email" placeholder="E-mail" required>
+								<span class="input-group-btn">
+									<button class="btn btn-info" type="submit">Enviar!</button>
+								</span>
+							</div><!-- /input-group -->
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Mensagens -->
+	<div class="modal mensagem_modal fade" id="mensagem_modal" tabindex="-1" role="dialog" aria-labelledby="mensagem_modal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title title_modal text-center">
+						<span id="img_profile"></span>
+						<span id="nome_profile"></span>
+					</h4>
+				</div>
+
+				<form >
+					<div class="modal-body">
+
+						<div class="texto_conversa">
+							<div class="list-group">
+								<div class="list-group-item">
+
+								<!-- <ul class="list-unstyled">
+										<li class="data">
+											<span>04/04/2016</span>
+										</li>
+									</ul> -->
+
+									<ul class="list-unstyled">
+											<!-- Conteudo da Mensagem -->
+									</ul>
+
+								</div><!-- list-group-item -->
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="modal-footer">
+						<div class="campo_digitar">
+							<div class="input-group">
+								<input type="text" class="form-control input-lg" placeholder="Digite sua mensagem...">
+								<span class="input-group-btn">
+									<button class="btn btn-lg btn_cdv" type="submit"><i class="fa fa-paper-plane"></i></button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<ul class="list-unstyled">
+						<h4>Institucional</h4>
+						<li><a href="#" class="btn-link">Quero Ser um Chef!</a></li>
+						<li><a href="#">Como Funciona</a></li>
+						<li><a href="#">Lorem Ipsum</a></li>
+						<li><a href="#">Segurança</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<ul class="list-unstyled">
+						<h4>Ajuda</h4>
+						<li><a href="#">Nossa Missão</a></li>
+						<li><a href="#">Time</a></li>
+						<li><a href="#">Contato</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<ul class="list-unstyled">
+						<h4>Siga Nos</h4>
+						<li>
+							<div class="fb-page" data-href="https://www.facebook.com/comidadevizinho" data-width="auto" data-height="250" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/comidadevizinho"><a href="https://www.facebook.com/comidadevizinho">Comida de Vizinho</a></blockquote></div></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<div class="container">
+				<h6><i class="fa fa-copyright"></i> 2015 Comida de Vizinho. Todos os direitos reservados</h6>
+			</div>
+		</div>
+	</footer>
+<!--
+<div id="fb-root"></div>
+<script async>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+-->
+</body>
