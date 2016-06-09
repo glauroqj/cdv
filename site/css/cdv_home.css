@@ -1627,7 +1627,9 @@
 	#exibition_meal {
 		margin-top: 10px;
 	}
-
+	#exibition_meal #map {
+		margin-top: 20px;
+	}
 	#exibition_meal .meal .editar_remover_prato {
 		position: absolute;
 		bottom: 0px;
