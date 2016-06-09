@@ -740,7 +740,7 @@
 		color: #838383;
 		font-size: 1.1em;
 	}
-	.about_meal #map {
+	.about_meal #map, #exibition_meal #map {
 		max-width: 500px;
 		max-height: 400px;
 		height: 100%;
@@ -1632,6 +1632,12 @@
 		position: absolute;
 		bottom: 0px;
 		right: 0px;
+	}
+	#exibition_meal .well-sm a {
+		color: #f24e4e;
+	}
+	#exibition_meal .well-sm a:hover {
+		color: #878787;
 	}
 	#exibition_meal .meal .editar_remover_prato .edit {
 		background: rgba(46, 204, 113, 0.65);
