@@ -972,6 +972,10 @@
 		margin-bottom: 10px;
 		padding-bottom: 10px;
 	}
+	.insert_plate .division_two .checkbox label input[type="checkbox"] {
+		font-size: 25px;
+		height: 30px;
+	}
 	.body-sucesso {
 		border: 1px solid #2ECC71 !important;
 	}
@@ -1590,8 +1594,8 @@
 		margin-left:2px;
 	}
 	.btn-upload {
-		background-color: #158cba;
-		border-color: #127ba3;
+		background-color: #4183D7;
+		border-color: #2E5C97;
 		color: #fff;
 	}
 	/* end become a cook */

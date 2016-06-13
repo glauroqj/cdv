@@ -179,6 +179,17 @@ $(document).ready(function() {
 		$('.adicional_cliente_local').toggle(100);
 	});
 
+	$('.insert_plate #preco_porcao').on('keyup', function(event) {
+		if ( $('.insert_plate #preco_porcao').val().length > 4 ) {
+			$('.insert_plate #preco_porcao_final').val(0);
+			var preco_final = $('.insert_plate #preco_porcao').val();
+			preco_final = parseFloat(preco_final.replace(/\,/g, '.'));
+			var acrescimo = preco_final * 10/100;
+			var preco_final_total = preco_final + acrescimo;
+			$('.insert_plate #preco_porcao_final').val(preco_final_total.toFixed(2).split('.'));
+		}
+	});
+
 	var nome = 1;
 	var valor = 1;
 	var quant = 1;
