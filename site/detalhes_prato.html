@@ -38,1182 +38,1135 @@
 	<!-- Google Maps  -->
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script  async>
+		var barri
 		function initialize() {
 			var mapCanvas = document.getElementById('map');
 			var mapOptions = {
-				center: new google.maps.LatLng(44.5403, -78.5463),
-				zoom: 8,
+				center: new google.maps.LatLng(-19.935506, -44.012436),
+				zoom: 16,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 			var map = new google.maps.Map(mapCanvas, mapOptions)
-		}
-		google.maps.event.addDomListener(window, 'load', initialize);
-	</script>
 
-	<!-- Iugu -->
-	<script src="https://js.iugu.com/v2"  async></script>
+			   // variável que define as opções do marcador
+			   var marker = new google.maps.Marker({
+			      position: new google.maps.LatLng(-19.935506, -44.012436), // variável com as coordenadas Lat e Lng
+			      map: map,
+			      title:"Casa do Chef"
+			  });
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
 
-	<!-- Facebook like / share -->
-	<meta property="og:url"           content="http://www.glauroqjuliani.com.br/projetos/detalhes_prato.html" />
-	<meta property="og:type"          content="Comida de Vizinho" />
-	<meta property="og:title"         content="Frango Xadrez ao Molho Pardo | Comida de Vizinho" />
-	<meta property="og:description"   content="Venha cozinhar você também!" />
-	<meta property="og:image"         content="http://www.glauroqjuliani.com.br/projetos/images/meals/frango_xadrez.jpg" />
-</head>
+		<!-- Facebook like / share -->
+		<meta property="og:url"           content="http://www.glauroqjuliani.com.br/projetos/detalhes_prato.html" />
+		<meta property="og:type"          content="Comida de Vizinho" />
+		<meta property="og:title"         content="Frango Xadrez ao Molho Pardo | Comida de Vizinho" />
+		<meta property="og:description"   content="Venha cozinhar você também!" />
+		<meta property="og:image"         content="http://www.glauroqjuliani.com.br/projetos/images/meals/frango_xadrez.jpg" />
+	</head>
 
-<body>
-	<script>
-
-		/* IUGU */
-
-		Iugu.setAccountID("463674ca-ac7a-4b0b-af69-0f9815528a78");
-		Iugu.setTestMode(true);
-
-		jQuery(function ($) {
-			$('#payment-form').submit(function (evt) {
-				if ($('#credit-card-checkbox').attr('checked')) {
-					var form = $(this);
-					var tokenResponseHandler = function (data) {
-
-						if (data.errors) {
-							alert("Erro salvando cartão: " + JSON.stringify(data.errors));
-						} else {
-							$("#token").val(data.id);
-							form.get(0).submit();
-						}
-					}
-
-					Iugu.createPaymentToken(this, tokenResponseHandler);
-					return false;
-				} else {
-					form.get(0).submit();
-				}
-			});
-
-			cc_checkbox = $('#credit-card-checkbox')
-			cc_checkbox_label = $('#credit-card-checkbox-label')
-			bs_checkbox = $('#bank-slip-checkbox')
-			bs_checkbox_label = $('#bank-slip-checkbox-label')
-			credit_card_form = $('.usable-creditcard-form')
-
-			cc_checkbox.click(function () {
-				bs_checkbox_label.removeClass("active");
-				cc_checkbox_label.addClass("active");
-				bs_checkbox.removeAttr("checked");
-				cc_checkbox.attr("checked", "checked");
-				credit_card_form.show();
-			});
-
-			bs_checkbox.click(function () {
-				cc_checkbox_label.removeClass("active");
-				bs_checkbox_label.addClass("active");
-				cc_checkbox.removeAttr("checked");
-				bs_checkbox.attr("checked", "checked");
-				credit_card_form.hide();
-			});
-		});
-
-</script>
-<header class="">
-	<nav class="navbar navbar-default nav_logged">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed btn-danger" data-toggle="collapse" data-target="#menu_cdv" aria-expanded="true">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand logomarca animated pulse" href="http://www.glauroqjuliani.com.br/projetos/home.html">
-					<img class="img-responsive" src="images/logo_red.png" alt="Comida de Vizinho" title="Comida de Vizinho">
-					<span>Comida de Vizinho</span>
-				</a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="menu_cdv">
-				<ul id="default_nav" class="nav navbar-nav navbar-right">
-					<li><a href="#float_search" role="button" data-toggle="collapse" aria-controls="float_search" aria-expanded="false">Pesquisar Pratos!</a></li>
-					<li><a href="home.html#how_works">Como Funciona?</a></li>
-					<li><a href="#sign_up" data-toggle="modal" data-target="#sign_up">Cadastrar</a></li>
-					<li><a href="#login" data-toggle="modal" data-target="#login">Login</a></li>
-				</ul>
-
-				<!-- Nav Login User -->
-				<ul id="client_logged" class="nav navbar-nav navbar-right">
-					<li><a href="#float_search" role="button" data-toggle="collapse" aria-controls="float_search" aria-expanded="false">Pesquisar Pratos!</a></li>
-					<li><a href="#">Mensagem</a></li>
-
-					<li role="presentation" class="dropdown">
-						<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><span id="nome"></span> <span id="img_profile"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Alterar Dados</a></li>
-							<li><a href="#">Perfil</a></li>
-							<li><a href="#">Meus Pedidos</a></li>
-							<li><a href="#" onclick="logOutFacebook();">Logout</a></li>
-						</ul>
-					</li>
-				</ul>
-				<!-- END Login User -->
-
-				<!-- Login Cook -->
-				<ul id="cook_logged"  class="nav navbar-nav navbar-right">
-					<li><a href="#float_search" role="button" data-toggle="collapse" aria-controls="float_search" aria-expanded="false">Pesquisar Pratos!</a></li>
-					<li><a href="#">Mensagem</a></li>
-					<li><a href="#">Criar Novo Prato</a></li>
-					<li role="presentation" class="dropdown">
-						<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><span id="nome"></span> <span id="img_profile"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Alterar Dados</a></li>
-							<li><a href="#">Perfil</a></li>
-							<li><a href="#">Meus Pedidos</a></li>
-							<li><a href="#" onclick="logOutFacebook();">Logout</a></li>
-						</ul>
-					</li>
-				</ul>
-				<!-- END Login Cook -->
-			</div>
-		</div>
-	</nav>
-
-
-	<div id="float_search" class="floating_search collapse">				
-		<div class="container-fluid">
-			<div class="row text-center">
-				<div class="col-sm-4 pull-right">
-					<form>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Digite o nome da refeição...">
-							<span class="input-group-btn">
-								<button class="btn btn-md btn-success" type="button"><i class="fa fa-search"></i> Buscar</button>
-							</span>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div><!-- end floating search -->
-</header><!-- /header -->
-<div class="detail_meal">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 col-lg-8 col-lg-offset-2 text-center title_food">
-				<h2>Frango Xadrez ao Molho Pardo</h2>
-				<h5>Santa Maria, Belo Horizonte - Terças - 11am/14pm </h5>
-			</div>
-			<div class="col-sm-12 col-lg-8 col-lg-offset-2 text-center meal_img">
-				<img class="img-responsive" src="images/meals/frango_xadrez.jpg" alt="Frango Xadrez" title="Frango Xadrez">
-
-				<div class="col-xs-3 col-sm-3 col-lg-3 text-left img_profile">
-					<div class="img_profile_cook text-center">
-						<a href="details_cook.html">
-							<img class="img-circle" src="images/profile_cook/cook.jpg">
+	<body>
+		<header class="">
+			<nav class="navbar navbar-default nav_logged">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed btn-danger" data-toggle="collapse" data-target="#menu_cdv" aria-expanded="true">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand logomarca animated pulse" href="http://www.glauroqjuliani.com.br/projetos/home.html">
+							<img class="img-responsive" src="images/logo_red.png" alt="Comida de Vizinho" title="Comida de Vizinho">
+							<span>Comida de Vizinho</span>
 						</a>
 					</div>
 
-					<div class="name_profile_cook">
-						<span class="name_cook">Glauro Cooker</span> / <span class="rating"><img src="./images/hat_chef.png" alt=""> <span class="value_rating">5</span></span>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="about_meal clearfix">
-				<div class="col-sm-12 col-lg-8 col-lg-offset-2">
-					<div class="col-sm-4 col-md-4 col-lg-4 text-center description clearfix">
-						<div class="clearfix col-xs-12">
-							<div class="">
-								<a href="#order" data-toggle="modal" data-target="#order" class="btn btn-md btn-block btn-success">Comprar</a>
-							</div>
-							<div class="list">
-								<div class="row">
-									<h5>
-										<span class="text-left col-xs-4"><b>Preço</b></span>
-										<span class="info_preco price text-right col-xs-8">12,95</span>
-									</h5>
-								</div>
-							</div>
-							<div class="list">
-								<div class="row">
-									<h5>
-										<span class="text-left col-xs-4"><b>Local</b></span>
-										<span class="text-right col-xs-8"><a href="#ingredient_title">Santa Maria</a></span>
-									</h5>
-								</div>
-							</div>
-							<div class="list">
-								<div class="row">
-									<h5>
-										<span class="text-left col-xs-4"><b>Data</b></span>
-										<span class="text-right col-xs-8">28/10</span>
-									</h5>
-								</div>
-							</div>
-							<div class="list">
-								<div class="row">
-									<h5>
-										<span class="text-left col-xs-4"><b>Horário</b></span>
-										<span class="text-right col-xs-8">11am / 13pm</span>
-									</h5>
-								</div>
-							</div>
-							<div class="list">
-								<div class="row">
-									<h5>
-										<span class="text-left col-xs-6"><b>Serve</b></span>
-										<span class="text-right col-xs-6">8 pessoas</span>
-									</h5>
-								</div>
-							</div>
-							<div class="list">
-								<div class="row">
-									<span class="text-left col-xs-6"><b>Informações</b></span>
-									<span class="text-right col-xs-6">
-										<ul class="nav nav-justified">
-											<li class="">
-												<div class="entrega_comida">
-													<img class="img-responsive" src="images/entrega.png" data-toggle="tooltip"  data-placement="top" data-original-title="Entrega no Local">
-												</div>
-											</li>
-											<li class="">
-												<div class="retira_comida">
-													<img class="img-responsive" src="images/retirada.png" data-toggle="tooltip"  data-placement="top" data-original-title="Retirada no Local">
-												</div>
-											</li>
-											<li class="">
-												<div class="em_casa_comida">
-													<img class="img-responsive" src="images/em_casa.png" data-toggle="tooltip"  data-placement="top" data-original-title="Comer no Local">
-												</div>
-											</li>
-										</ul></span>
-									</div>
-								</div>
-							</div>
-
-							<div class="social_media clearfix">
-								<div class="col-lg-12">
-									<div class="fb-like" data-href="https://www.facebook.com/comidadevizinho/?fref=ts" data-width="auto" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
-								</div>
-							</div>
-
-							<div class="send_msg clearfix">
-								<div class="">
-									<a href="#send_msg" data-toggle="modal" data-taget="#send_msg" class="btn btn-md btn-info">Enviar Mensagem</a>
-								</div>
-							</div>
-
-						</div><!-- end left side -->
-						<div class="col-sm-8 col-md-8 col-lg-8">
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="ingredient_title">
-										<h3>O que estou cozinhando</h3>
-									</div>
-									<div class="ingredient_info">
-										<h4>Chinês cinco especiarias frango é a minha refeição congelada destaque esta semana. Por favor, consulte Adicionar lista abaixo Ons para o meu lista completa das sazonais refeições congeladas disponíveis para o traslado. Basta descongelar e reaquecer para uma refeição caseira fácil e deliciosa!</h4>
-									</div>
-								</div>
-							</div><!-- end row -->
-
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="ingredient_title">
-										<h3>Acompanhamento</h3>
-									</div>
-									<div class="acompanhamento_info well">
-										<div class="row">
-											<div class="col-xs-7">
-												<span class="nome_acompanhamento">Coca-Cola 600ml</span>
-											</div>
-											<div class="col-xs-5 text-right">
-												<span>R$</span> <span class="preco_acompanhamento">5,20</span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xs-7">
-												<span class="nome_acompanhamento">Coca-Cola 2,5l</span>
-											</div>
-											<div class="col-xs-5 text-right">
-												<span>R$</span> <span class="preco_acompanhamento">7,20</span>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xs-7">
-												<span class="nome_acompanhamento">Coca-Cola 3l</span>
-											</div>
-											<div class="col-xs-5 text-right">
-												<span>R$</span> <span class="preco_acompanhamento">10,20</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div><!-- end row -->
-						</div>
-					</div><!-- end about meal -->
-					<div class="clearfix map_info">
-						<div class="col-sm-12 col-lg-8 col-lg-offset-2">
-							<div class="col-sm-4 col-md-4 col-lg-4 text-center end_map clearfix">
-								<div id="ingredient_title" class="clearfix col-xs-12">
-									<div class="list">
-										<h5>
-											<div class="text-left"><b>Horário</b></div>
-											<div class="text-left">11 am / 13 pm</div>
-										</h5>
-									</div>
-									<div class="list">
-										<h5>
-											<div class="text-left"><b>Local</b></div>
-											<div class="text-left">Santa Maria</div>
-										</h5>
-									</div>
-									<div class="list">
-										<h5>
-											<div class="text-left"><b>Próximo</b></div>
-											<div class="text-left">Santa Maria</div>
-										</h5>
-										<h6>Obs: A localização exata será exibida ao finalizar a compra.</h6>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-8 col-md-8 col-lg-8">
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="ingredient_title">
-											<h3>Informações de Local / Hora</h3>
-										</div>
-										<div id="map"></div>
-									</div>
-								</div><!-- end row -->
-
-							</div>
-						</div>
-					</div>
-				</div><!-- end row -->
-			</div>
-
-			<div class="col-sm-8 col-lg-8 col-lg-offset-2">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="ingredient_title text-center">
-							<h3>Comentários</h3>
-						</div>
-						<div class="comments">
-							<div class="prato_degustado">
-								<ul class="list-group">
-									<li class="list-group-item clearfix">
-										<div class="row">
-											<div class="col-xs-12 col-sm-8 col-lg-6 text-center divisao_prato">
-												<div class="descricao_prato clearfix">
-													<div class="nome_prato">
-														<a href="#">
-															<h6>Porção Sushi</h6>
-														</a>
-													</div>
-													<div class="detalhe_prato">
-														<div class="img_prato col-xs-6 col-sm-6">
-															<a href="#">
-																<img class="img-responsive img-rounded" src="http://www.comidadevizinho.com.br/assets/images/sushi.jpg">
-															</a>
-														</div>
-														<div class="col-xs-6 col-sm-6">
-															<ul class="list-unstyled text-left">
-																<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
-																<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
-																<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
-																<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-xs-12 col-sm-4 col-lg-2 text-center divisao_chef">
-												<div class="chef_nome">
-													<a href="#">
-														<h6>Cláudia Ramalho</h6>
-													</a>
-												</div>
-												<div class="img_chef">
-													<a href="#">
-														<img class="img-responsive img-circle" src="http://www.comidadevizinho.com.br/assets/images/Cozinheira.jpg">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-xs-12 col-sm-12 col-lg-4 text-center divisao_comentario">
-												<div class="titulo_comentario">
-													<h6>Comentário</h6>
-												</div>
-												<div class="texto_comentario">
-													Esse Sushi estava sensacional! De todos os pratos que ja comi no Comida de Vizinho, esse sem sdúvaasasi melhddddddores.
-												</div>
-											</div>
-										</div>
-									</li>
-
-									<li class="list-group-item clearfix">
-										<div class="row">
-											<div class="col-xs-12 col-sm-8 col-lg-6 text-center divisao_prato">
-												<div class="descricao_prato clearfix">
-													<div class="nome_prato">
-														<a href="#">
-															<h6>Porção Sushi</h6>
-														</a>
-													</div>
-													<div class="detalhe_prato">
-														<div class="img_prato col-xs-6 col-sm-6">
-															<a href="#">
-																<img class="img-responsive img-rounded" src="http://www.comidadevizinho.com.br/assets/images/sushi.jpg">
-															</a>
-														</div>
-														<div class="col-xs-6 col-sm-6">
-															<ul class="list-unstyled text-left">
-																<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
-																<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
-																<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
-																<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-xs-12 col-sm-4 col-lg-2 text-center divisao_chef">
-												<div class="chef_nome">
-													<a href="#">
-														<h6>Flávio Henrique</h6>
-													</a>
-												</div>
-												<div class="img_chef">
-													<a href="#">
-														<img class="img-responsive img-circle" src="http://www.comidadevizinho.com.br/assets/uploads/img/perfil/flavio3.jpg">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-xs-12 col-sm-12 col-lg-4 text-center divisao_comentario">
-												<div class="titulo_comentario">
-													<h6>Comentário</h6>
-												</div>
-												<div class="texto_comentario">
-													Esse Sushi estava sensacional! De todos os pratos que ja comi no Comida de Vizinho, esse sem sdúvaasasi melhddddddores.
-												</div>
-											</div>
-										</div>
-									</li>
-
-									<li class="list-group-item clearfix">
-										<div class="row">
-											<div class="col-xs-12 col-sm-8 col-lg-6 text-center divisao_prato">
-												<div class="descricao_prato clearfix">
-													<div class="nome_prato">
-														<a href="#">
-															<h6>Porção Sushi</h6>
-														</a>
-													</div>
-													<div class="detalhe_prato">
-														<div class="img_prato col-xs-6 col-sm-6">
-															<a href="#">
-																<img class="img-responsive img-rounded" src="http://www.comidadevizinho.com.br/assets/images/sushi.jpg">
-															</a>
-														</div>
-														<div class="col-xs-6 col-sm-6">
-															<ul class="list-unstyled text-left">
-																<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
-																<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
-																<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
-																<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-xs-12 col-sm-4 col-lg-2 text-center divisao_chef">
-												<div class="chef_nome">
-													<a href="#">
-														<h6>Paulo Lopes</h6>
-													</a>
-												</div>
-												<div class="img_chef">
-													<a href="#">
-														<img class="img-responsive img-circle" src="http://www.comidadevizinho.com.br/assets/uploads/img/perfil/adamo1.jpg">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-xs-12 col-sm-12 col-lg-4 text-center divisao_comentario">
-												<div class="titulo_comentario">
-													<h6>Comentário</h6>
-												</div>
-												<div class="texto_comentario">
-													Esse Sushi estava sensacional! De todos os pratos que ja comi no Comida de Vizinho, esse sem sdúvaasasi melhddddddores.
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="list-group-item bt_acessar_todos">
-										<div class="text-right">
-											<a class="btn btn-info" type="button" href="exibe_pratos_menu.html">Acessar Todos Pratos Vendidos</a>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div><!-- end row -->
-			</div>
-		</div>
-
-
-
-		<!-- Modal sign up -->
-		<div class="modal sign_up_modal fade animated bounce" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="sign_up">
-			<div class="modal-dialog" role="document">
-				<div class="panel modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title title_modal text-center" id="sign_up"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça Seu Cadastro Agora Mesmo!</h4>
-					</div>
-					<div class="modal-body">
-						<!-- Nav tabs -->
-						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#client" aria-controls="client" role="tab" data-toggle="tab">Cliente</a></li>
-							<li role="presentation"><a href="#cook" aria-controls="cook" role="tab" data-toggle="tab">Cozinheiro</a></li>
+					<div class="collapse navbar-collapse" id="menu_cdv">
+						<ul id="default_nav" class="nav navbar-nav navbar-right">
+							<li><a href="#float_search" role="button" data-toggle="collapse" aria-controls="float_search" aria-expanded="false">Pesquisar Pratos!</a></li>
+							<li><a href="home.html#how_works">Como Funciona?</a></li>
+							<li><a href="#sign_up" data-toggle="modal" data-target="#sign_up">Cadastrar</a></li>
+							<li><a href="#login" data-toggle="modal" data-target="#login">Login</a></li>
 						</ul>
 
-						<!-- Tab panes -->
-						<div class="tab-content">
+						<!-- Nav Login User -->
+						<ul id="client_logged" class="nav navbar-nav navbar-right">
+							<li><a href="#float_search" role="button" data-toggle="collapse" aria-controls="float_search" aria-expanded="false">Pesquisar Pratos!</a></li>
+							<li><a href="#">Mensagem</a></li>
 
-							<div role="tabpane1" class="tab-pane active" id="client">
-								<div class="facebook clearfix">
-									<div class="col-sm-8 col-sm-offset-2 login_facebook">
-										<button id="client_facebook" class="btn btn_facebook btn-block" onclick="login();">Cadastrar com Facebook</button>
-									</div>
-								</div>
-								<div class="modal-body clearfix">
-									<div class="text-justify">
-										<h3>Preencha os campos abaixo para se cadastrar!</h3>
-									</div>
-									<form>
-										<div class="input-group input-group-md form-group has-feedback">
-											<span class="input-group-addon"><i class="fa fa-lg fa-user"></i></span>
-											<input type="text" class="form-control" id="inputName" placeholder="Nome" aria-invalid="false" required>
-											<span class="glyphicon form-control-feedback"></span>
-										</div>
+							<li role="presentation" class="dropdown">
+								<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><span id="nome"></span> <span id="img_profile"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Alterar Dados</a></li>
+									<li><a href="#">Perfil</a></li>
+									<li><a href="#">Meus Pedidos</a></li>
+									<li><a href="#" onclick="logOutFacebook();">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+						<!-- END Login User -->
 
-										<div class="input-group input-group-md form-group has-feedback">
-											<span class="input-group-addon"><i class="fa fa-lg fa-envelope"></i></span>
-											<input type="email" class="form-control" id="inputEmail" name="email" placeholder="E-mail" aria-invalid="false" required>
-											<span class="glyphicon form-control-feedback"></span>
-										</div>
-
-										<div class="input-group input-group-md form-group has-feedback">
-											<span class="input-group-addon"><i class="fa fa-lg fa-lock"></i></span>
-											<input type="password" class="form-control" id="inputPassword" placeholder="Senha" aria-invalid="false" required>
-											<span class="glyphicon form-control-feedback"></span>
-										</div>
-
-										<div class="modal-footer">
-											<button id="clean" type="button" class="btn btn-xs btn-primary pull-left"><i class="fa fa-trash"></i> Limpar</button>
-											<button type="submit" class="btn btn_cdv"><i class="fa fa-user-plus"></i> Criar Conta</button>
-										</div>
-
-									</form>
-								</div>
-							</div>
-
-							<div role="tabpanel2" class="tab-pane clearfix" id="cook">
-								<div class="facebook clearfix">
-									<div class="col-sm-8 col-sm-offset-2 login_facebook">
-										<button id="cook_facebook" class="btn btn_facebook btn-block" onclick="login();">Cadastrar com Facebook</button>
-									</div>
-								</div>
-								<div class="modal-body">
-									<div class="col-sm-12 text-center">
-										<h3>Tem vontade de cozinhar para seus vizinhos?</h3>
-									</div>
-									<div class="col-sm-12 text-center">
-										<a href="cook.html" class="btn btn-success btn-lg btn-block"><i class="fa fa-thumbs-o-up"></i> Sim, Tenho Vontade!</a>
-									</div>
-								</div>
-							</div>
-
-						</div><!-- end tab content -->
+						<!-- Login Cook -->
+						<ul id="cook_logged"  class="nav navbar-nav navbar-right">
+							<li><a href="#float_search" role="button" data-toggle="collapse" aria-controls="float_search" aria-expanded="false">Pesquisar Pratos!</a></li>
+							<li><a href="#">Mensagem</a></li>
+							<li><a href="#">Criar Novo Prato</a></li>
+							<li role="presentation" class="dropdown">
+								<a class="dropdown-toggle dropdown-cdv" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"><span id="nome"></span> <span id="img_profile"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Alterar Dados</a></li>
+									<li><a href="#">Perfil</a></li>
+									<li><a href="#">Meus Pedidos</a></li>
+									<li><a href="#" onclick="logOutFacebook();">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+						<!-- END Login Cook -->
 					</div>
-
 				</div>
-			</div>
-		</div>
-
-		<!-- Modal login -->
-		<div class="modal login_modal fade animated bounce" id="login" tabindex="-1" role="dialog" aria-labelledby="login">
-			<div class="modal-dialog" role="document">
-				<div class="panel modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title title_modal text-center" id="login"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça Login!</h4>
-					</div>
-					<div class="facebook clearfix">
-						<div class="col-sm-8 col-sm-offset-2 login_facebook">
-							<button id="login_facebook" class="btn btn_facebook btn-block" onclick="login();">Entrar com Facebook</button>
-						</div>
-					</div>
-					<form data-toggle="validator" role="form">
-						<div class="modal-body">
-
-							<div class="input-group input-group-md login_email form-group has-feedback">
-								<span class="input-group-addon"><i class="fa fa-lg fa-envelope-o"></i></span>
-								<input type="email" class="form-control" id="inputEmail" name="email" placeholder="e-mail" aria-invalid="false" required>
-								<span class="glyphicon form-control-feedback"></span>
-							</div>
-
-							<div class="input-group input-group-md login_password form-group has-feedback">
-								<span class="input-group-addon"><i class="fa fa-lg fa-key"></i></span>
-								<input type="password" class="form-control" id="inputPassword" placeholder="*****" aria-invalid="false" required>
-								<span class="glyphicon form-control-feedback"></span>
-							</div>
+			</nav>
 
 
-						</div>
-						<div class="modal-footer">
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-xs btn-info pull-left" data-toggle="collapse" data-target="#recovery_password" aria-expanded="false" aria-controls="recovery_password"><i class="fa fa-wrench"></i> Esqueceu a senha?</button>
-
-								<button type="button" class="btn btn-xs btn-warning pull-left no_account"><i class="fa fa-exclamation-circle"></i> Não tenho conta</button>
-							</div>
-							<div class="input-group-btn">
-								<button id="action" type="submit" class="btn btn-success"><i class="fa fa-lg fa-sign-in"></i> Fazer Login</button>
-							</div>
-						</div>
-					</form>
-					<div id="recovery_password" class="clearfix collapse recovery_password">
-						<div class="col-sm-8">
-							<h5>Informe seu e-mail abaixo para receber sua senha:</h5>
-							<form data-toggle="validator" role="form">
-								<div class="input-group form-group">
-									<input type="email" class="form-control" id="inputEmail" name="email" placeholder="E-mail" required>
+			<div id="float_search" class="floating_search collapse">				
+				<div class="container-fluid">
+					<div class="row text-center">
+						<div class="col-sm-4 pull-right">
+							<form>
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Digite o nome da refeição...">
 									<span class="input-group-btn">
-										<button class="btn btn-info" type="submit">Enviar!</button>
+										<button class="btn btn-md btn-success" type="button"><i class="fa fa-search"></i> Buscar</button>
 									</span>
-								</div><!-- /input-group -->
+								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-
-		<!-- Modal Mensagem -->
-		<div class="modal msg_modal fade animated bounce" id="send_msg" tabindex="-1" role="dialog" aria-labelledby="send_msg">
-			<div class="modal-dialog" role="document">
-				<div class="panel modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title title_modal text-center" id="send_msg"><img src="images/logo_red.png" width="35" height="auto" alt=""> Mensagem ao Chef!</h4>
-					</div>
-					<form>
-						<div class="modal-body">
-							<div class="msg_from">
-								<span>De:</span> <span id="email_user"></span>
-							</div>
-							<div class="msg_to">
-								<span>Mensagem</span>
-								<textarea class="form-control" rows="3" placeholder="Digite sua mensagem..."></textarea>
-							</div>
-
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Enviar Mensagem</button>
-							<div class="contact_email text-center">
-								<h5>Tem uma pergunta sobre algo não relacionado a esta refeição? E-mail para <a href="#">comidadevizinho@gmail.com</a></h5>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal Pedido -->
-		<div class="modal order fade animated bounce" id="order" tabindex="-1" role="dialog" aria-labelledby="order">
-			<div class="modal-dialog" role="document">
-				<div class="panel modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title title_modal text-center" id="order"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça seu Pedido!</h4>
-					</div>
-					<form data-toggle="validator" role="form">
-						<div class="modal-body">
-							<div class="img_meal text-center">
-								<img class="img-responsive" src="images/meals/frango_xadrez.jpg">
-							</div>
-							<div class="panel-heading text-center details_order">
-								<span>Detalhes do Pedido</span>
-							</div>
-							<div class="grid_order">
-
-								<div class="row title">
-									<div class="col-xs-5 col-sm-6">
-										<div class="text-center order_title">Prato</div>
-									</div>
-									<div class="col-xs-3 col-sm-3">
-										<div class="text-center order_title">Quantidade</div>
-									</div>
-									<div class="col-xs-4 col-sm-3 text-center">
-										<div class="text-center order_title">Valor</div>
-									</div>
-								</div>
-
-								<div class="plate_list list clearfix row">
-									<div class="col-xs-5 col-sm-6">
-										<div class="plate_name">Frango Xadrez ao Molho Pardo</div>
-									</div>
-									<div class="col-xs-3 col-sm-3 amount_plate">
-										<div class="form-group">
-											<div class="input-group col-lg-12 select_quant_prato">
-												<select class="form-control" id="select">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-xs-4 col-sm-3 text-center">
-										<div class="sub_total">
-											<div class="input-group form-group prato_sub_total">
-												<span class="input-group-addon" id="basic-addon1">R$</span>
-												<input type="number" class="form-control" name="" id="" disabled value="12.50">
-											</div>
-										</div>
-									</div>
-								</div><!-- end row order -->
-
-								<div class="row title">
-									<div class="col-xs-5 col-sm-6">
-										<div class="text-center order_title">Acompanhamento</div>
-									</div>
-									<div class="col-xs-3 col-sm-3">
-										<div class="text-center order_title">Quantidade</div>
-									</div>
-									<div class="col-xs-4 col-sm-3">
-										<div class="text-center order_title">Valor</div>
-									</div>
-								</div>
-
-								<div class="campo_acompanhamento list row">
-									<div class="grid_acompanhamento_0  clearfix">
-										<div class="col-xs-5 col-sm-6 side_dish">
-											<!-- nome acompanhamento -->
-											<div class="nome_acompanhamento">Coca-Cola 600ml</div>
-										</div>
-										<div class="col-xs-3 col-sm-3 acompanhamento_0">
-											<!-- quantidade acompanhamento -->
-											<select class="form-control" id="select">
-												<option>0</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-										<div class="col-xs-4 col-sm-3 text-center sub_acomp acompanhamento_0">
-											<!-- sub-valor acompanhamento -->
-											<div class="sub_total">
-												<div class="input-group form-group">
-													<span class="input-group-addon" id="basic-addon1">R$</span>
-													<input type="number" class="form-control" name="" id="" disabled value="6.40">
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="grid_acompanhamento_1 clearfix">
-										<div class="col-xs-5 col-sm-6 side_dish">
-											<!-- nome acompanhamento -->
-											<div class="nome_acompanhamento">Coca-Cola 2l</div>
-										</div>
-										<div class="col-xs-3 col-sm-3 acompanhamento_1">
-											<!-- quantidade acompanhamento -->
-											<select class="form-control" id="select">
-												<option>0</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-										<div class="col-xs-4 col-sm-3 text-center sub_acomp acompanhamento_1">
-											<!-- sub-valor acompanhamento -->
-											<div class="sub_total">
-												<div class="input-group form-group">
-													<span class="input-group-addon" id="basic-addon1">R$</span>
-													<input type="number" class="form-control" name="" id="" disabled value="8.50">
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="grid_acompanhamento_2 clearfix">
-										<div class="col-xs-5 col-sm-6 side_dish">
-											<!-- nome acompanhamento -->
-											<div class="nome_acompanhamento">Coca-Cola 3l</div>
-										</div>
-										<div class="col-xs-3 col-sm-3 acompanhamento_2">
-											<!-- quantidade acompanhamento -->
-											<select class="form-control" id="select">
-												<option>0</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-										<div class="col-xs-4 col-sm-3 text-center sub_acomp acompanhamento_2">
-											<!-- sub-valor acompanhamento -->
-											<div class="sub_total">
-												<div class="input-group form-group">
-													<span class="input-group-addon" id="basic-addon1">R$</span>
-													<input type="number" class="form-control" name="" id="" disabled value="10.80">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="grid_acompanhamento_3 clearfix">
-									</div>
-									<div class="grid_acompanhamento_4 clearfix">
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-xs-12 col-sm-12">
-										<div class="text-left order_title">Escolha Abaixo o Serviço que Deseja!</div>
-									</div>
-								</div><!-- end row -->
-
-								<div class="col-xs-12 well well-sm text-center campo_escolha">
-									<div class="btn-group" data-toggle="buttons">
-
-										<label class="btn col-xs-12 col-sm-4 col-lg-4 entregar">
-											<div class="entrega_comida">
-												<img class="" src="images/entrega.png">
-											</div>
-											<input type="radio" name="servico" id="servico1" value="">
-											<span>Entrega no Local</span>
-											<div class="valor_servico">
-												<div class="input-group">
-													<input type="number" class="form-control input-sm" name="entrega_casa" id="entrega_casa" disabled="" value="8.80">
-												</div>
-											</div>
-										</label>
-
-										<label class="btn col-xs-12 col-sm-4 col-lg-4 retirar">
-											<div class="retira_comida">
-												<img class="" src="images/retirada.png">
-											</div>
-											<input type="radio" name="servico" id="servico2" value="">
-											<span>Retirada no Local</span>
-											<div class="valor_servico">
-												<div class="input-group">
-													<input type="number" class="form-control input-sm" name="retirada_local" id="retirada_local" disabled="" value="0.00">
-												</div>
-											</div>
-										</label>
-
-										<label class="btn col-xs-12 col-sm-4 col-lg-4 casa active">
-											<div class="em_casa_comida">
-												<img class="" src="images/em_casa.png">
-											</div>
-											<input type="radio" name="servico" id="servico3" value="" checked>
-											<span>Comer no Local</span>
-											<div class="valor_servico">
-												<div class="input-group">
-													<input type="number" class="form-control input-sm" name="comer_local" id="comer_local" disabled="" value="0.00">
-												</div>
-											</div>
-										</label>
-									</div>
-								</div>
-
-
-								<div class="row">
-									<div class="col-xs-8 col-sm-8">
-
-									</div>
-									<div class="col-xs-4 col-sm-4">
-										<div class="text-right order_title order_total_title">Total</div>
-										<div class="text-right total">
-											<div class="total_pedido_content">
-												<div class="input-group form-group">
-													<span class="input-group-addon" id="basic-addon1">R$</span>
-													<input type="number" class="form-control input-lg" name="total_pedido" id="total_pedido" disabled="" value="">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div><!-- end row TOTAL -->
-
-							</div><!-- end row order -->
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success btn-block go_checkout">Finalizar <i class="fa fa-long-arrow-right"></i></button>
-							<div class="alert_order text-center">
-								<h5>Ao clicar no botão <b>finalizar</b>, você estará sendo direcionado para concluir o seu pedido!</h5>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal Check-OUT -->
-		<div class="modal checkout fade animated bounce" id="checkout" tabindex="-1" role="dialog" aria-labelledby="checkout">
-			<div class="modal-dialog" role="document">
-				<div class="panel modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title title_modal text-center" id="order"><img src="images/logo_red.png" width="35" height="auto" alt=""> Conclusão Pedido!</h4>
-					</div>
-
-					<div class="modal-body clearfix">
-						<div class="grid_confirma clearfix">
-							<div class="verificar_prato">
-								<div class="row title">
-									<div class="col-xs-5 col-sm-6">
-										<div class="text-center order_title"><legend>Prato</legend></div>
-									</div>
-									<div class="col-xs-3 col-sm-3">
-										<div class="text-center order_title"><legend>Quantidade</legend></div>
-									</div>
-									<div class="col-xs-4 col-sm-3 text-center">
-										<div class="text-center order_title"><legend>Valor</legend></div>
-									</div>
-								</div>
-
-								<div class="prato_confirma row">
-									<div class="col-xs-5 col-sm-6 text-center">
-										<div class="prato_nome"></div>
-									</div>
-									<div class="col-xs-3 col-sm-3 text-center">
-										<div class="quantidade_prato"></div>
-									</div>
-									<div class="col-xs-4 col-sm-3 text-center">
-										<div class="sub_total_prato">
-											<input type="number" class="form-control text-center input-sm" name="" id="" disabled="" value="">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="verificar_acompanhamento">
-								<div class="row title">
-									<div class="col-xs-5 col-sm-6">
-										<div class="text-center order_title"><legend>Acompanhamento</legend></div>
-									</div>
-									<div class="col-xs-3 col-sm-3">
-										<div class="text-center order_title"><legend>Quantidade</legend></div>
-									</div>
-									<div class="col-xs-4 col-sm-3 text-center">
-										<div class="text-center order_title"><legend>Valor</legend></div>
-									</div>
-								</div>
-
-								<div class="acompanhamento_confirma row">
-									<div class="col-xs-5 col-sm-6 text-center nome_acomp">
-										<div class="acompanhamento_nome_0"></div>
-										<div class="acompanhamento_nome_1"></div>
-										<div class="acompanhamento_nome_2"></div>
-										<div class="acompanhamento_nome_3"></div>
-										<div class="acompanhamento_nome_4"></div>
-									</div>
-									<div class="col-xs-3 col-sm-3 text-center quant_acomp">
-										<div class="quantidade_acompanhamento_0"></div>
-										<div class="quantidade_acompanhamento_1"></div>
-										<div class="quantidade_acompanhamento_2"></div>
-										<div class="quantidade_acompanhamento_3"></div>
-										<div class="quantidade_acompanhamento_4"></div>
-									</div>
-									<div class="col-xs-4 col-sm-3 text-center valor_acomp">
-										<div class="sub_total_acompanhamento_0">
-											<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
-										</div>
-										<div class="sub_total_acompanhamento_1">
-											<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
-										</div>
-										<div class="sub_total_acompanhamento_2">
-											<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
-										</div>
-										<div class="sub_total_acompanhamento_3">
-											<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
-										</div>
-										<div class="sub_total_acompanhamento_4">
-											<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="confirma_pedido_servico">
-								<div class="verificar_servico">
-									<div class="row title">
-										<div class="col-xs-9 col-sm-9">
-											<div class="text-center order_title"><legend>Serviço</legend></div>
-										</div>
-										<div class="col-xs-3 col-sm-3 text-center">
-											<div class="text-center order_title"><legend>Valor</legend></div>
-										</div>
-									</div>
-									<div class="servico_confirma row">
-										<div class="col-xs-9 col-sm-9 text-center">
-											<div class="servico_nome"></div>
-										</div>
-										<div class="col-xs-3 col-sm-3 text-center">
-											<div class="sub_total_servico">
-												<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
-											</div>
-										</div>
-									</div>
-
-								</div>
-
-							</div>
-							<div class="confirma_pedido_total">
-								<div class="conclusao_pedido_total">
-									<div class="row title">
-										<div class="col-xs-8 col-sm-8">
-										</div>
-										<div class="col-xs-4 col-sm-4 text-center">
-											<div class="text-center order_title"><legend>Total</legend></div>
-										</div>
-									</div>
-
-									<div class="soma_total row">
-										<div class="col-xs-8 col-sm-8">
-										</div>
-										<div class="col-xs-4 col-sm-4 text-center">
-											<div class="conclusao_total_soma">
-												<div class="input-group form-group">
-													<span class="input-group-addon" id="basic-addon1">R$</span>
-													<input type="number" class="form-control input-lg" name="conclusao_total_pedido" id="conclusao_total_pedido" disabled="" value="">
-												</div>
-											</div>
-										</div>
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-						<div class="credit-card-payment">
-							<div class="">
-								<div class="text-center order_title"><legend>Formas de Pagamentos</legend></div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-12 credit-card-payment">
-									<form id="payment-form" action="/checkout/pay" method="POST">
-										<div class="btn-group payment-method-btn-group" data-toggle="buttons">
-											<label class="btn btn-default active" id="credit-card-checkbox-label">
-												<input checked type="checkbox" id="credit-card-checkbox" name="method" value="">Cartão de Crédito</input>
-											</label>
-											<label class="btn btn-default" id="bank-slip-checkbox-label">
-												<input type="checkbox" id="bank-slip-checkbox" name="method" value="bank_slip">Boleto Bancário</input>
-											</label>
-										</div>
-										<div class="usable-creditcard-form">
-											<div class="wrapper">
-												<div class="input-group nmb_a">
-													<div class="icon ccic-brand"></div>
-													<input autocomplete="off" class="credit_card_number" data-iugu="number" placeholder="Número do Cartão" type="text" value="" />
-												</div>
-												<div class="input-group nmb_b">
-													<div class="icon ccic-cvv"></div>
-													<input autocomplete="off" class="credit_card_cvv" data-iugu="verification_value" placeholder="CVV" type="text" value="" />
-												</div>
-												<div class="input-group nmb_c">
-													<div class="icon ccic-name"></div>
-													<input class="credit_card_name" data-iugu="full_name" placeholder="Titular do Cartão" type="text" value="" />
-												</div>
-												<div class="input-group nmb_d">
-													<div class="icon ccic-exp"></div>
-													<input autocomplete="off" class="credit_card_expiration" data-iugu="expiration" placeholder="MM/AA" type="text" value="" />
-												</div>
-											</div>
-											<div class="footer">
-												<img src="http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/cc-icons.e8f4c6b4db3cc0869fa93ad535acbfe7.png" alt="Visa, Master, Diners. Amex" border="0" /> <a class="iugu-btn" href="http://iugu.com" tabindex="-1">
-												<img src="http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/payments-by-iugu.1df7caaf6958f1b5774579fa807b5e7f.png" alt="Pagamentos por Iugu" border="0" />
-											</a>
-										</div>
-									</div>
-									<input type="hidden" name="token" id="token" value="" readonly="true" size="64" style="text-align:center" />
-									<div class="submit-div">
-										<button type="submit" class="btn btn-primary">Pagar</button>
-									</div>
-								</form>
-							</div>
-						</div>
-
-					</div><!-- end -->
-
-				</div><!-- end modal body -->
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-success go_checkout"><i class="fa fa-check"></i> Comprar</button>
-					<div class="alert_order text-center">
-						<h5>Ao clicar no botão <b>comprar</b>, você estará concluindo o pedido e liberando a cobrança em seu cartão!</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<ul class="list-unstyled">
-						<h4>Institucional</h4>
-						<li><a href="#" class="btn-link">Quero Ser um Chef!</a></li>
-						<li><a href="#">Como Funciona</a></li>
-						<li><a href="#">Lorem Ipsum</a></li>
-						<li><a href="#">Segurança</a></li>
-					</ul>
-				</div>
-				<div class="col-sm-4">
-					<ul class="list-unstyled">
-						<h4>Ajuda</h4>
-						<li><a href="#">Nossa Missão</a></li>
-						<li><a href="#">Time</a></li>
-						<li><a href="#">Contato</a></li>
-					</ul>
-				</div>
-				<div class="col-sm-4">
-					<ul class="list-unstyled">
-						<h4>Siga Nos</h4>
-						<li>
-							<div class="fb-page" data-href="https://www.facebook.com/comidadevizinho" data-width="auto" data-height="250" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/comidadevizinho"><a href="https://www.facebook.com/comidadevizinho">Comida de Vizinho</a></blockquote></div></div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="copyright">
+			</div><!-- end floating search -->
+		</header><!-- /header -->
+		<div class="detail_meal">
 			<div class="container">
-				<h6><i class="fa fa-copyright"></i> 2015 Comida de Vizinho. Todos os direitos reservados</h6>
-			</div>
-		</div>
-	</footer>
+				<div class="row">
+					<div class="col-sm-12 col-lg-8 col-lg-offset-2 text-center title_food">
+						<h2>Frango Xadrez ao Molho Pardo</h2>
+						<h5>Santa Maria, Belo Horizonte - Terças - 11am/14pm </h5>
+					</div>
+					<div class="col-sm-12 col-lg-8 col-lg-offset-2 text-center meal_img">
+						<img class="img-responsive" src="images/meals/frango_xadrez.jpg" alt="Frango Xadrez" title="Frango Xadrez">
 
-	<div id="fb-root"></div>
+						<div class="col-xs-3 col-sm-3 col-lg-3 text-left img_profile">
+							<div class="img_profile_cook text-center">
+								<a href="details_cook.html">
+									<img class="img-circle" src="images/profile_cook/cook.jpg">
+								</a>
+							</div>
+
+							<div class="name_profile_cook">
+								<span class="name_cook">Glauro Cooker</span> / <span class="rating"><img src="./images/hat_chef.png" alt=""> <span class="value_rating">5</span></span>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="about_meal clearfix">
+						<div class="col-sm-12 col-lg-8 col-lg-offset-2">
+							<div class="col-sm-4 col-md-4 col-lg-4 text-center description clearfix">
+								<div class="clearfix col-xs-12">
+									<div class="">
+										<a href="#order" data-toggle="modal" data-target="#order" class="btn btn-md btn-block btn-success">Comprar</a>
+									</div>
+									<div class="list">
+										<div class="row">
+											<h5>
+												<span class="text-left col-xs-4"><b>Preço</b></span>
+												<span class="info_preco price text-right col-xs-8">12,95</span>
+											</h5>
+										</div>
+									</div>
+									<div class="list">
+										<div class="row">
+											<h5>
+												<span class="text-left col-xs-4"><b>Local</b></span>
+												<span class="text-right col-xs-8"><a href="#ingredient_title">Santa Maria</a></span>
+											</h5>
+										</div>
+									</div>
+									<div class="list">
+										<div class="row">
+											<h5>
+												<span class="text-left col-xs-4"><b>Data</b></span>
+												<span class="text-right col-xs-8">28/10</span>
+											</h5>
+										</div>
+									</div>
+									<div class="list">
+										<div class="row">
+											<h5>
+												<span class="text-left col-xs-4"><b>Horário</b></span>
+												<span class="text-right col-xs-8">11am / 13pm</span>
+											</h5>
+										</div>
+									</div>
+									<div class="list">
+										<div class="row">
+											<h5>
+												<span class="text-left col-xs-6"><b>Serve</b></span>
+												<span class="text-right col-xs-6">8 pessoas</span>
+											</h5>
+										</div>
+									</div>
+									<div class="list">
+										<div class="row">
+											<span class="text-left col-xs-6"><b>Informações</b></span>
+											<span class="text-right col-xs-6">
+												<ul class="nav nav-justified">
+													<li class="">
+														<div class="entrega_comida">
+															<img class="img-responsive" src="images/entrega.png" data-toggle="tooltip"  data-placement="top" data-original-title="Entrega no Local">
+														</div>
+													</li>
+													<li class="">
+														<div class="retira_comida">
+															<img class="img-responsive" src="images/retirada.png" data-toggle="tooltip"  data-placement="top" data-original-title="Retirada no Local">
+														</div>
+													</li>
+													<li class="">
+														<div class="em_casa_comida">
+															<img class="img-responsive" src="images/em_casa.png" data-toggle="tooltip"  data-placement="top" data-original-title="Comer no Local">
+														</div>
+													</li>
+												</ul></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="social_media clearfix">
+										<div class="col-lg-12">
+											<div class="fb-like" data-href="https://www.facebook.com/comidadevizinho/?fref=ts" data-width="auto" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+										</div>
+									</div>
+
+									<div class="send_msg clearfix">
+										<div class="">
+											<a href="#send_msg" data-toggle="modal" data-taget="#send_msg" class="btn btn-md btn-info">Enviar Mensagem</a>
+										</div>
+									</div>
+
+								</div><!-- end left side -->
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="ingredient_title">
+												<h3>O que estou cozinhando</h3>
+											</div>
+											<div class="ingredient_info">
+												<h4>Chinês cinco especiarias frango é a minha refeição congelada destaque esta semana. Por favor, consulte Adicionar lista abaixo Ons para o meu lista completa das sazonais refeições congeladas disponíveis para o traslado. Basta descongelar e reaquecer para uma refeição caseira fácil e deliciosa!</h4>
+											</div>
+										</div>
+									</div><!-- end row -->
+
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="ingredient_title">
+												<h3>Acompanhamento</h3>
+											</div>
+											<div class="acompanhamento_info well">
+												<div class="row">
+													<div class="col-xs-7">
+														<span class="nome_acompanhamento">Coca-Cola 600ml</span>
+													</div>
+													<div class="col-xs-5 text-right">
+														<span>R$</span> <span class="preco_acompanhamento">5,20</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-xs-7">
+														<span class="nome_acompanhamento">Coca-Cola 2,5l</span>
+													</div>
+													<div class="col-xs-5 text-right">
+														<span>R$</span> <span class="preco_acompanhamento">7,20</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-xs-7">
+														<span class="nome_acompanhamento">Coca-Cola 3l</span>
+													</div>
+													<div class="col-xs-5 text-right">
+														<span>R$</span> <span class="preco_acompanhamento">10,20</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div><!-- end row -->
+								</div>
+							</div><!-- end about meal -->
+							<div class="clearfix map_info">
+								<div class="col-sm-12 col-lg-8 col-lg-offset-2">
+									<div class="col-sm-4 col-md-4 col-lg-4 text-center end_map clearfix">
+										<div id="ingredient_title" class="clearfix col-xs-12">
+											<div class="list">
+												<h5>
+													<div class="text-left"><b>Horário</b></div>
+													<div class="text-left">11 am / 13 pm</div>
+												</h5>
+											</div>
+											<div class="list">
+												<h5>
+													<div class="text-left"><b>Local</b></div>
+													<div class="text-left">Santa Maria</div>
+												</h5>
+											</div>
+											<div class="list">
+												<h5>
+													<div class="text-left"><b>Próximo</b></div>
+													<div class="text-left">Santa Maria</div>
+												</h5>
+												<h6>Obs: A localização exata será exibida ao finalizar a compra.</h6>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-sm-8 col-md-8 col-lg-8">
+										<div class="row">
+											<div class="col-xs-12">
+												<div class="ingredient_title">
+													<h3>Informações de Local / Hora</h3>
+												</div>
+												<div id="map"></div>
+											</div>
+										</div><!-- end row -->
+
+									</div>
+								</div>
+							</div>
+						</div><!-- end row -->
+					</div>
+
+					<div class="col-sm-8 col-lg-8 col-lg-offset-2">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="ingredient_title text-center">
+									<h3>Comentários</h3>
+								</div>
+								<div class="comments">
+									<div class="prato_degustado">
+										<ul class="list-group">
+											<li class="list-group-item clearfix">
+												<div class="row">
+													<div class="col-xs-12 col-sm-8 col-lg-6 text-center divisao_prato">
+														<div class="descricao_prato clearfix">
+															<div class="nome_prato">
+																<a href="#">
+																	<h6>Porção Sushi</h6>
+																</a>
+															</div>
+															<div class="detalhe_prato">
+																<div class="img_prato col-xs-6 col-sm-6">
+																	<a href="#">
+																		<img class="img-responsive img-rounded" src="http://www.comidadevizinho.com.br/assets/images/sushi.jpg">
+																	</a>
+																</div>
+																<div class="col-xs-6 col-sm-6">
+																	<ul class="list-unstyled text-left">
+																		<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
+																		<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
+																		<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
+																		<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-4 col-lg-2 text-center divisao_chef">
+														<div class="chef_nome">
+															<a href="#">
+																<h6>Cláudia Ramalho</h6>
+															</a>
+														</div>
+														<div class="img_chef">
+															<a href="#">
+																<img class="img-responsive img-circle" src="http://www.comidadevizinho.com.br/assets/images/Cozinheira.jpg">
+															</a>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-12 col-lg-4 text-center divisao_comentario">
+														<div class="titulo_comentario">
+															<h6>Comentário</h6>
+														</div>
+														<div class="texto_comentario">
+															Esse Sushi estava sensacional! De todos os pratos que ja comi no Comida de Vizinho, esse sem sdúvaasasi melhddddddores.
+														</div>
+													</div>
+												</div>
+											</li>
+
+											<li class="list-group-item clearfix">
+												<div class="row">
+													<div class="col-xs-12 col-sm-8 col-lg-6 text-center divisao_prato">
+														<div class="descricao_prato clearfix">
+															<div class="nome_prato">
+																<a href="#">
+																	<h6>Porção Sushi</h6>
+																</a>
+															</div>
+															<div class="detalhe_prato">
+																<div class="img_prato col-xs-6 col-sm-6">
+																	<a href="#">
+																		<img class="img-responsive img-rounded" src="http://www.comidadevizinho.com.br/assets/images/sushi.jpg">
+																	</a>
+																</div>
+																<div class="col-xs-6 col-sm-6">
+																	<ul class="list-unstyled text-left">
+																		<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
+																		<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
+																		<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
+																		<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-4 col-lg-2 text-center divisao_chef">
+														<div class="chef_nome">
+															<a href="#">
+																<h6>Flávio Henrique</h6>
+															</a>
+														</div>
+														<div class="img_chef">
+															<a href="#">
+																<img class="img-responsive img-circle" src="http://www.comidadevizinho.com.br/assets/uploads/img/perfil/flavio3.jpg">
+															</a>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-12 col-lg-4 text-center divisao_comentario">
+														<div class="titulo_comentario">
+															<h6>Comentário</h6>
+														</div>
+														<div class="texto_comentario">
+															Esse Sushi estava sensacional! De todos os pratos que ja comi no Comida de Vizinho, esse sem sdúvaasasi melhddddddores.
+														</div>
+													</div>
+												</div>
+											</li>
+
+											<li class="list-group-item clearfix">
+												<div class="row">
+													<div class="col-xs-12 col-sm-8 col-lg-6 text-center divisao_prato">
+														<div class="descricao_prato clearfix">
+															<div class="nome_prato">
+																<a href="#">
+																	<h6>Porção Sushi</h6>
+																</a>
+															</div>
+															<div class="detalhe_prato">
+																<div class="img_prato col-xs-6 col-sm-6">
+																	<a href="#">
+																		<img class="img-responsive img-rounded" src="http://www.comidadevizinho.com.br/assets/images/sushi.jpg">
+																	</a>
+																</div>
+																<div class="col-xs-6 col-sm-6">
+																	<ul class="list-unstyled text-left">
+																		<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
+																		<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
+																		<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
+																		<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-4 col-lg-2 text-center divisao_chef">
+														<div class="chef_nome">
+															<a href="#">
+																<h6>Paulo Lopes</h6>
+															</a>
+														</div>
+														<div class="img_chef">
+															<a href="#">
+																<img class="img-responsive img-circle" src="http://www.comidadevizinho.com.br/assets/uploads/img/perfil/adamo1.jpg">
+															</a>
+														</div>
+													</div>
+
+													<div class="col-xs-12 col-sm-12 col-lg-4 text-center divisao_comentario">
+														<div class="titulo_comentario">
+															<h6>Comentário</h6>
+														</div>
+														<div class="texto_comentario">
+															Esse Sushi estava sensacional! De todos os pratos que ja comi no Comida de Vizinho, esse sem sdúvaasasi melhddddddores.
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="list-group-item bt_acessar_todos">
+												<div class="text-right">
+													<a class="btn btn-info" type="button" href="exibe_pratos_menu.html">Acessar Todos Pratos Vendidos</a>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div><!-- end row -->
+					</div>
+				</div>
+
+
+
+				<!-- Modal sign up -->
+				<div class="modal sign_up_modal fade" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="sign_up">
+					<div class="modal-dialog" role="document">
+						<div class="panel modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title title_modal text-center" id="sign_up"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça Seu Cadastro Agora Mesmo!</h4>
+							</div>
+							<div class="modal-body">
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="active"><a href="#client" aria-controls="client" role="tab" data-toggle="tab">Cliente</a></li>
+									<li role="presentation"><a href="#cook" aria-controls="cook" role="tab" data-toggle="tab">Cozinheiro</a></li>
+								</ul>
+
+								<!-- Tab panes -->
+								<div class="tab-content">
+
+									<div role="tabpane1" class="tab-pane active" id="client">
+										<div class="facebook clearfix">
+											<div class="col-sm-8 col-sm-offset-2 login_facebook">
+												<button id="client_facebook" class="btn btn_facebook btn-block" onclick="login();">Cadastrar com Facebook</button>
+											</div>
+										</div>
+										<div class="modal-body clearfix">
+											<div class="text-justify">
+												<h3>Preencha os campos abaixo para se cadastrar!</h3>
+											</div>
+											<form>
+												<div class="input-group input-group-md form-group has-feedback">
+													<span class="input-group-addon"><i class="fa fa-lg fa-user"></i></span>
+													<input type="text" class="form-control" id="inputName" placeholder="Nome" aria-invalid="false" required>
+													<span class="glyphicon form-control-feedback"></span>
+												</div>
+
+												<div class="input-group input-group-md form-group has-feedback">
+													<span class="input-group-addon"><i class="fa fa-lg fa-envelope"></i></span>
+													<input type="email" class="form-control" id="inputEmail" name="email" placeholder="E-mail" aria-invalid="false" required>
+													<span class="glyphicon form-control-feedback"></span>
+												</div>
+
+												<div class="input-group input-group-md form-group has-feedback">
+													<span class="input-group-addon"><i class="fa fa-lg fa-lock"></i></span>
+													<input type="password" class="form-control" id="inputPassword" placeholder="Senha" aria-invalid="false" required>
+													<span class="glyphicon form-control-feedback"></span>
+												</div>
+
+												<div class="modal-footer">
+													<button id="clean" type="button" class="btn btn-xs btn-primary pull-left"><i class="fa fa-trash"></i> Limpar</button>
+													<button type="submit" class="btn btn_cdv"><i class="fa fa-user-plus"></i> Criar Conta</button>
+												</div>
+
+											</form>
+										</div>
+									</div>
+
+									<div role="tabpanel2" class="tab-pane clearfix" id="cook">
+										<div class="facebook clearfix">
+											<div class="col-sm-8 col-sm-offset-2 login_facebook">
+												<button id="cook_facebook" class="btn btn_facebook btn-block" onclick="login();">Cadastrar com Facebook</button>
+											</div>
+										</div>
+										<div class="modal-body">
+											<div class="col-sm-12 text-center">
+												<h3>Tem vontade de cozinhar para seus vizinhos?</h3>
+											</div>
+											<div class="col-sm-12 text-center">
+												<a href="cook.html" class="btn btn-success btn-lg btn-block"><i class="fa fa-thumbs-o-up"></i> Sim, Tenho Vontade!</a>
+											</div>
+										</div>
+									</div>
+
+								</div><!-- end tab content -->
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal login -->
+				<div class="modal login_modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login">
+					<div class="modal-dialog" role="document">
+						<div class="panel modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title title_modal text-center" id="login"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça Login!</h4>
+							</div>
+							<div class="facebook clearfix">
+								<div class="col-sm-8 col-sm-offset-2 login_facebook">
+									<button id="login_facebook" class="btn btn_facebook btn-block" onclick="login();">Entrar com Facebook</button>
+								</div>
+							</div>
+							<form data-toggle="validator" role="form">
+								<div class="modal-body">
+
+									<div class="input-group input-group-md login_email form-group has-feedback">
+										<span class="input-group-addon"><i class="fa fa-lg fa-envelope-o"></i></span>
+										<input type="email" class="form-control" id="inputEmail" name="email" placeholder="e-mail" aria-invalid="false" required>
+										<span class="glyphicon form-control-feedback"></span>
+									</div>
+
+									<div class="input-group input-group-md login_password form-group has-feedback">
+										<span class="input-group-addon"><i class="fa fa-lg fa-key"></i></span>
+										<input type="password" class="form-control" id="inputPassword" placeholder="*****" aria-invalid="false" required>
+										<span class="glyphicon form-control-feedback"></span>
+									</div>
+
+
+								</div>
+								<div class="modal-footer">
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-xs btn-info pull-left" data-toggle="collapse" data-target="#recovery_password" aria-expanded="false" aria-controls="recovery_password"><i class="fa fa-wrench"></i> Esqueceu a senha?</button>
+
+										<button type="button" class="btn btn-xs btn-warning pull-left no_account"><i class="fa fa-exclamation-circle"></i> Não tenho conta</button>
+									</div>
+									<div class="input-group-btn">
+										<button id="action" type="submit" class="btn btn-success"><i class="fa fa-lg fa-sign-in"></i> Fazer Login</button>
+									</div>
+								</div>
+							</form>
+							<div id="recovery_password" class="clearfix collapse recovery_password">
+								<div class="col-sm-8">
+									<h5>Informe seu e-mail abaixo para receber sua senha:</h5>
+									<form data-toggle="validator" role="form">
+										<div class="input-group form-group">
+											<input type="email" class="form-control" id="inputEmail" name="email" placeholder="E-mail" required>
+											<span class="input-group-btn">
+												<button class="btn btn-info" type="submit">Enviar!</button>
+											</span>
+										</div><!-- /input-group -->
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal Mensagem -->
+				<div class="modal msg_modal fade" id="send_msg" tabindex="-1" role="dialog" aria-labelledby="send_msg">
+					<div class="modal-dialog" role="document">
+						<div class="panel modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title title_modal text-center" id="send_msg"><img src="images/logo_red.png" width="35" height="auto" alt=""> Mensagem ao Chef!</h4>
+							</div>
+							<form>
+								<div class="modal-body">
+									<div class="msg_from">
+										<span>De:</span> <span id="email_user"></span>
+									</div>
+									<div class="msg_to">
+										<span>Mensagem</span>
+										<textarea class="form-control" rows="3" placeholder="Digite sua mensagem..."></textarea>
+									</div>
+
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Enviar Mensagem</button>
+									<div class="contact_email text-center">
+										<h5>Tem uma pergunta sobre algo não relacionado a esta refeição? E-mail para <a href="#">comidadevizinho@gmail.com</a></h5>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal Pedido -->
+				<div class="modal order fade" id="order" tabindex="-1" role="dialog" aria-labelledby="order">
+					<div class="modal-dialog" role="document">
+						<div class="panel modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title title_modal text-center" id="order"><img src="images/logo_red.png" width="35" height="auto" alt=""> Faça seu Pedido!</h4>
+							</div>
+							<form data-toggle="validator" role="form">
+								<div class="modal-body">
+									<div class="img_meal text-center">
+										<img class="img-responsive" src="images/meals/frango_xadrez.jpg">
+									</div>
+									<div class="panel-heading text-center details_order">
+										<span>Detalhes do Pedido</span>
+									</div>
+									<div class="grid_order">
+
+										<div class="row title">
+											<div class="col-xs-5 col-sm-6">
+												<div class="text-center order_title">Prato</div>
+											</div>
+											<div class="col-xs-3 col-sm-3">
+												<div class="text-center order_title">Quantidade</div>
+											</div>
+											<div class="col-xs-4 col-sm-3 text-center">
+												<div class="text-center order_title">Valor</div>
+											</div>
+										</div>
+
+										<div class="plate_list list clearfix row">
+											<div class="col-xs-5 col-sm-6">
+												<div class="plate_name">Frango Xadrez ao Molho Pardo</div>
+											</div>
+											<div class="col-xs-3 col-sm-3 amount_plate">
+												<div class="form-group">
+													<div class="input-group col-lg-12 select_quant_prato">
+														<select class="form-control" id="select">
+															<option>1</option>
+															<option>2</option>
+															<option>3</option>
+															<option>4</option>
+															<option>5</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-4 col-sm-3 text-center">
+												<div class="sub_total">
+													<div class="input-group form-group prato_sub_total">
+														<span class="input-group-addon" id="basic-addon1">R$</span>
+														<input type="number" class="form-control" name="" id="" disabled value="12.50">
+													</div>
+												</div>
+											</div>
+										</div><!-- end row order -->
+
+										<div class="row title">
+											<div class="col-xs-5 col-sm-6">
+												<div class="text-center order_title">Acompanhamento</div>
+											</div>
+											<div class="col-xs-3 col-sm-3">
+												<div class="text-center order_title">Quantidade</div>
+											</div>
+											<div class="col-xs-4 col-sm-3">
+												<div class="text-center order_title">Valor</div>
+											</div>
+										</div>
+
+										<div class="campo_acompanhamento list row">
+											<div class="grid_acompanhamento_0  clearfix">
+												<div class="col-xs-5 col-sm-6 side_dish">
+													<!-- nome acompanhamento -->
+													<div class="nome_acompanhamento">Coca-Cola 600ml</div>
+												</div>
+												<div class="col-xs-3 col-sm-3 acompanhamento_0">
+													<!-- quantidade acompanhamento -->
+													<select class="form-control" id="select">
+														<option>0</option>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+												</div>
+												<div class="col-xs-4 col-sm-3 text-center sub_acomp acompanhamento_0">
+													<!-- sub-valor acompanhamento -->
+													<div class="sub_total">
+														<div class="input-group form-group">
+															<span class="input-group-addon" id="basic-addon1">R$</span>
+															<input type="number" class="form-control" name="" id="" disabled value="6.40">
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="grid_acompanhamento_1 clearfix">
+												<div class="col-xs-5 col-sm-6 side_dish">
+													<!-- nome acompanhamento -->
+													<div class="nome_acompanhamento">Coca-Cola 2l</div>
+												</div>
+												<div class="col-xs-3 col-sm-3 acompanhamento_1">
+													<!-- quantidade acompanhamento -->
+													<select class="form-control" id="select">
+														<option>0</option>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+												</div>
+												<div class="col-xs-4 col-sm-3 text-center sub_acomp acompanhamento_1">
+													<!-- sub-valor acompanhamento -->
+													<div class="sub_total">
+														<div class="input-group form-group">
+															<span class="input-group-addon" id="basic-addon1">R$</span>
+															<input type="number" class="form-control" name="" id="" disabled value="8.50">
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="grid_acompanhamento_2 clearfix">
+												<div class="col-xs-5 col-sm-6 side_dish">
+													<!-- nome acompanhamento -->
+													<div class="nome_acompanhamento">Coca-Cola 3l</div>
+												</div>
+												<div class="col-xs-3 col-sm-3 acompanhamento_2">
+													<!-- quantidade acompanhamento -->
+													<select class="form-control" id="select">
+														<option>0</option>
+														<option>1</option>
+														<option>2</option>
+														<option>3</option>
+														<option>4</option>
+														<option>5</option>
+													</select>
+												</div>
+												<div class="col-xs-4 col-sm-3 text-center sub_acomp acompanhamento_2">
+													<!-- sub-valor acompanhamento -->
+													<div class="sub_total">
+														<div class="input-group form-group">
+															<span class="input-group-addon" id="basic-addon1">R$</span>
+															<input type="number" class="form-control" name="" id="" disabled value="10.80">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="grid_acompanhamento_3 clearfix">
+											</div>
+											<div class="grid_acompanhamento_4 clearfix">
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-xs-12 col-sm-12">
+												<div class="text-left order_title">Escolha Abaixo o Serviço que Deseja!</div>
+											</div>
+										</div><!-- end row -->
+
+										<div class="col-xs-12 well well-sm text-center campo_escolha">
+											<div class="btn-group" data-toggle="buttons">
+
+												<label class="btn col-xs-12 col-sm-4 col-lg-4 entregar">
+													<div class="entrega_comida">
+														<img class="" src="images/entrega.png">
+													</div>
+													<input type="radio" name="servico" id="servico1" value="">
+													<span>Entrega no Local</span>
+													<div class="valor_servico">
+														<div class="input-group">
+															<input type="number" class="form-control input-sm" name="entrega_casa" id="entrega_casa" disabled="" value="8.80">
+														</div>
+													</div>
+												</label>
+
+												<label class="btn col-xs-12 col-sm-4 col-lg-4 retirar">
+													<div class="retira_comida">
+														<img class="" src="images/retirada.png">
+													</div>
+													<input type="radio" name="servico" id="servico2" value="">
+													<span>Retirada no Local</span>
+													<div class="valor_servico">
+														<div class="input-group">
+															<input type="number" class="form-control input-sm" name="retirada_local" id="retirada_local" disabled="" value="0.00">
+														</div>
+													</div>
+												</label>
+
+												<label class="btn col-xs-12 col-sm-4 col-lg-4 casa active">
+													<div class="em_casa_comida">
+														<img class="" src="images/em_casa.png">
+													</div>
+													<input type="radio" name="servico" id="servico3" value="" checked>
+													<span>Comer no Local</span>
+													<div class="valor_servico">
+														<div class="input-group">
+															<input type="number" class="form-control input-sm" name="comer_local" id="comer_local" disabled="" value="0.00">
+														</div>
+													</div>
+												</label>
+											</div>
+										</div>
+
+
+										<div class="row">
+											<div class="col-xs-8 col-sm-8">
+
+											</div>
+											<div class="col-xs-4 col-sm-4">
+												<div class="text-right order_title order_total_title">Total</div>
+												<div class="text-right total">
+													<div class="total_pedido_content">
+														<div class="input-group form-group">
+															<span class="input-group-addon" id="basic-addon1">R$</span>
+															<input type="number" class="form-control input-lg" name="total_pedido" id="total_pedido" disabled="" value="">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div><!-- end row TOTAL -->
+
+									</div><!-- end row order -->
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-success btn-block go_checkout">Finalizar <i class="fa fa-long-arrow-right"></i></button>
+									<div class="alert_order text-center">
+										<h5>Ao clicar no botão <b>finalizar</b>, você estará sendo direcionado para concluir o seu pedido!</h5>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal Check-OUT -->
+				<div class="modal checkout fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="checkout">
+					<div class="modal-dialog" role="document">
+						<div class="panel modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title title_modal text-center" id="order"><img src="images/logo_red.png" width="35" height="auto" alt=""> Conclusão Pedido!</h4>
+							</div>
+
+							<div class="modal-body clearfix">
+								<div class="grid_confirma clearfix">
+									<div class="verificar_prato">
+										<div class="row title">
+											<div class="col-xs-5 col-sm-6">
+												<div class="text-center order_title"><legend>Prato</legend></div>
+											</div>
+											<div class="col-xs-3 col-sm-3">
+												<div class="text-center order_title"><legend>Quantidade</legend></div>
+											</div>
+											<div class="col-xs-4 col-sm-3 text-center">
+												<div class="text-center order_title"><legend>Valor</legend></div>
+											</div>
+										</div>
+
+										<div class="prato_confirma row">
+											<div class="col-xs-5 col-sm-6 text-center">
+												<div class="prato_nome"></div>
+											</div>
+											<div class="col-xs-3 col-sm-3 text-center">
+												<div class="quantidade_prato"></div>
+											</div>
+											<div class="col-xs-4 col-sm-3 text-center">
+												<div class="sub_total_prato">
+													<input type="number" class="form-control text-center input-sm" name="" id="" disabled="" value="">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="verificar_acompanhamento">
+										<div class="row title">
+											<div class="col-xs-5 col-sm-6">
+												<div class="text-center order_title"><legend>Acompanhamento</legend></div>
+											</div>
+											<div class="col-xs-3 col-sm-3">
+												<div class="text-center order_title"><legend>Quantidade</legend></div>
+											</div>
+											<div class="col-xs-4 col-sm-3 text-center">
+												<div class="text-center order_title"><legend>Valor</legend></div>
+											</div>
+										</div>
+
+										<div class="acompanhamento_confirma row">
+											<div class="col-xs-5 col-sm-6 text-center nome_acomp">
+												<div class="acompanhamento_nome_0"></div>
+												<div class="acompanhamento_nome_1"></div>
+												<div class="acompanhamento_nome_2"></div>
+												<div class="acompanhamento_nome_3"></div>
+												<div class="acompanhamento_nome_4"></div>
+											</div>
+											<div class="col-xs-3 col-sm-3 text-center quant_acomp">
+												<div class="quantidade_acompanhamento_0"></div>
+												<div class="quantidade_acompanhamento_1"></div>
+												<div class="quantidade_acompanhamento_2"></div>
+												<div class="quantidade_acompanhamento_3"></div>
+												<div class="quantidade_acompanhamento_4"></div>
+											</div>
+											<div class="col-xs-4 col-sm-3 text-center valor_acomp">
+												<div class="sub_total_acompanhamento_0">
+													<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
+												</div>
+												<div class="sub_total_acompanhamento_1">
+													<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
+												</div>
+												<div class="sub_total_acompanhamento_2">
+													<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
+												</div>
+												<div class="sub_total_acompanhamento_3">
+													<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
+												</div>
+												<div class="sub_total_acompanhamento_4">
+													<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="confirma_pedido_servico">
+										<div class="verificar_servico">
+											<div class="row title">
+												<div class="col-xs-9 col-sm-9">
+													<div class="text-center order_title"><legend>Serviço</legend></div>
+												</div>
+												<div class="col-xs-3 col-sm-3 text-center">
+													<div class="text-center order_title"><legend>Valor</legend></div>
+												</div>
+											</div>
+											<div class="servico_confirma row">
+												<div class="col-xs-9 col-sm-9 text-center">
+													<div class="servico_nome"></div>
+												</div>
+												<div class="col-xs-3 col-sm-3 text-center">
+													<div class="sub_total_servico">
+														<input type="number" class="form-control input-sm text-center" name="" id="" disabled="" value="">
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+									<div class="confirma_pedido_total">
+										<div class="conclusao_pedido_total">
+											<div class="row title">
+												<div class="col-xs-8 col-sm-8">
+												</div>
+												<div class="col-xs-4 col-sm-4 text-center">
+													<div class="text-center order_title"><legend>Total</legend></div>
+												</div>
+											</div>
+
+											<div class="soma_total row">
+												<div class="col-xs-8 col-sm-8">
+												</div>
+												<div class="col-xs-4 col-sm-4 text-center">
+													<div class="conclusao_total_soma">
+														<div class="input-group form-group">
+															<span class="input-group-addon" id="basic-addon1">R$</span>
+															<input type="number" class="form-control input-lg" name="conclusao_total_pedido" id="conclusao_total_pedido" disabled="" value="">
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+								<div class="credit-card-payment">
+									<div class="">
+										<div class="text-center order_title"><legend>Formas de Pagamentos</legend></div>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-12 credit-card-payment">
+											<form id="payment-form" action="/checkout/pay" method="POST">
+												<div class="btn-group payment-method-btn-group" data-toggle="buttons">
+													<label class="btn btn-default active" id="credit-card-checkbox-label">
+														<input checked type="checkbox" id="credit-card-checkbox" name="method" value="">Cartão de Crédito</input>
+													</label>
+													<label class="btn btn-default" id="bank-slip-checkbox-label">
+														<input type="checkbox" id="bank-slip-checkbox" name="method" value="bank_slip">Boleto Bancário</input>
+													</label>
+												</div>
+												<div class="usable-creditcard-form">
+													<div class="wrapper">
+														<div class="input-group nmb_a">
+															<div class="icon ccic-brand"></div>
+															<input autocomplete="off" class="credit_card_number" data-iugu="number" placeholder="Número do Cartão" type="text" value="" />
+														</div>
+														<div class="input-group nmb_b">
+															<div class="icon ccic-cvv"></div>
+															<input autocomplete="off" class="credit_card_cvv" data-iugu="verification_value" placeholder="CVV" type="text" value="" />
+														</div>
+														<div class="input-group nmb_c">
+															<div class="icon ccic-name"></div>
+															<input class="credit_card_name" data-iugu="full_name" placeholder="Titular do Cartão" type="text" value="" />
+														</div>
+														<div class="input-group nmb_d">
+															<div class="icon ccic-exp"></div>
+															<input autocomplete="off" class="credit_card_expiration" data-iugu="expiration" placeholder="MM/AA" type="text" value="" />
+														</div>
+													</div>
+													<div class="footer">
+														<img src="http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/cc-icons.e8f4c6b4db3cc0869fa93ad535acbfe7.png" alt="Visa, Master, Diners. Amex" border="0" /> <a class="iugu-btn" href="http://iugu.com" tabindex="-1">
+														<img src="http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/payments-by-iugu.1df7caaf6958f1b5774579fa807b5e7f.png" alt="Pagamentos por Iugu" border="0" />
+													</a>
+												</div>
+											</div>
+											<input type="hidden" name="token" id="token" value="" readonly="true" size="64" style="text-align:center" />
+											<div class="submit-div">
+												<button type="submit" class="btn btn-primary">Pagar</button>
+											</div>
+										</form>
+									</div>
+								</div>
+
+							</div><!-- end -->
+
+						</div><!-- end modal body -->
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-success go_checkout"><i class="fa fa-check"></i> Comprar</button>
+							<div class="alert_order text-center">
+								<h5>Ao clicar no botão <b>comprar</b>, você estará concluindo o pedido e liberando a cobrança em seu cartão!</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<ul class="list-unstyled">
+								<h4>Institucional</h4>
+								<li><a href="#" class="btn-link">Quero Ser um Chef!</a></li>
+								<li><a href="#">Como Funciona</a></li>
+								<li><a href="#">Lorem Ipsum</a></li>
+								<li><a href="#">Segurança</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<ul class="list-unstyled">
+								<h4>Ajuda</h4>
+								<li><a href="#">Nossa Missão</a></li>
+								<li><a href="#">Time</a></li>
+								<li><a href="#">Contato</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<ul class="list-unstyled">
+								<h4>Siga Nos</h4>
+								<li>
+									<div class="fb-page" data-href="https://www.facebook.com/comidadevizinho" data-width="auto" data-height="250" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/comidadevizinho"><a href="https://www.facebook.com/comidadevizinho">Comida de Vizinho</a></blockquote></div></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="container">
+						<h6><i class="fa fa-copyright"></i> 2015 Comida de Vizinho. Todos os direitos reservados</h6>
+					</div>
+				</div>
+			</footer>
+
+<!-- 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) return;
 		js = d.createElement(s); js.id = id;
 		js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5&appId=1679344818946589";
 		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+	}(document, 'script', 'facebook-jssdk'));</script> -->
 </body>

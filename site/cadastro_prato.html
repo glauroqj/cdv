@@ -373,7 +373,7 @@ function logOutFacebook() {
 
 									<div class="row">
 										<div class="col-xs-12 col-sm-12 col-md-12">
-											<label for="select" class="control-label pull-left">Data e Hora final da exibição do prato para venda <span type="button" class="btn" data-toggle="tooltip" data-placement="right" title="Informe o dia em que você deseja que o prato saia da venda e a hora que isto irá acontecer!"><span class="badge">?</span></span></label>
+											<label for="select" class="control-label pull-left">Data e Hora final da exibição do prato para venda <span type="button" class="btn" data-toggle="tooltip" data-placement="right" title="Informe o dia em que o prato sera feito, com o horario inicial e final, para que o cliente possa receber a refeicao "><span class="badge">?</span></span></label>
 										</div>
 										<div class="col-xs-12 col-sm-12 col-md-12">
 											<div class="row">
@@ -384,9 +384,18 @@ function logOutFacebook() {
 														<span class="glyphicon form-control-feedback"></span>
 													</div>
 												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 col-sm-6 col-md-6">
+													<label for="select" class="control-label text-center">Horário Inicial</label>
+													<div class="form-group has-feedback">
+														<input type="time" class="form-control" id="visivel_ate_hora_i" name="visivel_ate_hora_i" required aria-invalid="false">
+														<span class="glyphicon form-control-feedback"></span>
+													</div>
+												</div>
 
 												<div class="col-xs-12 col-sm-6 col-md-6">
-													<label for="select" class="control-label text-center">Horário que encerra a exibição</label>
+													<label for="select" class="control-label text-center">Horário Final</label>
 													<div class="form-group has-feedback">
 														<input type="time" class="form-control" id="visivel_ate_hora_i" name="visivel_ate_hora_i" required aria-invalid="false">
 														<span class="glyphicon form-control-feedback"></span>
