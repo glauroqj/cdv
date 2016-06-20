@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="./css/theme.css">
 	<link rel="stylesheet" href="./css/animate.css">
 	<link rel="stylesheet" href="./css/cdv_home.css">
+	<link rel="stylesheet" href="./css/fontawesome-stars.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 	<!-- Fontes -->
@@ -16,12 +17,14 @@
 
 	<!-- JS -->
 	<script src="./js/jquery.js"></script>
+	<script src="./js/jquery-latest.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/scrollReveal.min.js"></script>
 	<script src="./js/jquery.cookie.js"></script>
 	<script src="./js/validation_cdv.js"></script>
 	<script src="./js/jquery.mask.js"></script>
 	<script src="./js/validator.min.js"></script>
+	<script src="./js/jquery.barrating.js"></script>
 
 	<!-- Scroll -->
 	<script src="./js/smoothscroll.js"></script>
@@ -75,50 +78,50 @@ function logOutFacebook() {
 	});
 }
 
-window.fbAsyncInit = function() {
-	FB.init({
-		appId      : '1679344818946589',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
-});
+// window.fbAsyncInit = function() {
+// 	FB.init({
+// 		appId      : '1679344818946589',
+//     cookie     : true,  // enable cookies to allow the server to access 
+//                         // the session
+//     xfbml      : true,  // parse social plugins on this page
+//     version    : 'v2.2' // use version 2.2
+// });
 
-	FB.getLoginStatus(function(response) {
-		statusChangeCallback(response);
-	});
+// 	FB.getLoginStatus(function(response) {
+// 		statusChangeCallback(response);
+// 	});
 
-};
+// };
 
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-  	var js, fjs = d.getElementsByTagName(s)[0];
-  	if (d.getElementById(id)) return;
-  	js = d.createElement(s); js.id = id;
-  	js.src = "//connect.facebook.net/en_US/sdk.js";
-  	fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+//   // Load the SDK asynchronously
+//   (function(d, s, id) {
+//   	var js, fjs = d.getElementsByTagName(s)[0];
+//   	if (d.getElementById(id)) return;
+//   	js = d.createElement(s); js.id = id;
+//   	js.src = "//connect.facebook.net/en_US/sdk.js";
+//   	fjs.parentNode.insertBefore(js, fjs);
+//   }(document, 'script', 'facebook-jssdk'));
 
-  function testAPI() {
-  	console.log('Bem-Vindo!  Adquirindo suas informações.... ');
+//   function testAPI() {
+//   	console.log('Bem-Vindo!  Adquirindo suas informações.... ');
 
-  	FB.api('/me?fields=first_name', function(response) {
-  		//alert(response.first_name);
-  		$('#nome').html( response.first_name );
-  	});
+//   	FB.api('/me?fields=first_name', function(response) {
+//   		//alert(response.first_name);
+//   		$('#nome').html( response.first_name );
+//   	});
 
-  	FB.api('/me?fields=email', function(response) {
-  		//alert(response.email);
-  		$('#email_user').html( response.email );
-  	});
+//   	FB.api('/me?fields=email', function(response) {
+//   		//alert(response.email);
+//   		$('#email_user').html( response.email );
+//   	});
 
 
-  	FB.api('/me', function(response) {
-  		console.log(response);
-  		$('#img_profile').html('<img class="facebook_img_profile img-circle" src="http://graph.facebook.com/' + response.id + '/picture"/>')
-  	});
+//   	FB.api('/me', function(response) {
+//   		console.log(response);
+//   		$('#img_profile').html('<img class="facebook_img_profile img-circle" src="http://graph.facebook.com/' + response.id + '/picture"/>')
+//   	});
 
-  }
+//   }
 </script>
 <!-- End Facebook -->
 <body>
@@ -252,14 +255,26 @@ window.fbAsyncInit = function() {
 							<div class="col-xs-6 col-lg-6 text-right">
 								<h5><span class="badge">4</span></h5>
 							</div>
+
 							<div class="col-xs-12 col-lg-12 text-center">
-								<div class="progress progress-striped">
+
+								<div class="valor_avaliacao">
+									<select id="sabor">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+
+<!-- 								<div class="progress progress-striped">
 									<div class="progress-bar progress-bar-info" style="width: 80%"></div>
 								</div>
 								<br>
 								<div class="progress progress-striped active">
 									<div class="progress-bar" style="width: 45%"></div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</li>
@@ -271,9 +286,16 @@ window.fbAsyncInit = function() {
 							<div class="col-xs-6 col-lg-6 text-right">
 								<h5><span class="badge">1</span></h5>
 							</div>
+
 							<div class="col-xs-12 col-lg-12 text-center">
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-info" style="width: 10%"></div>
+								<div class="valor_avaliacao">
+									<select id="preco">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -287,8 +309,14 @@ window.fbAsyncInit = function() {
 								<h5><span class="badge">3</span></h5>
 							</div>
 							<div class="col-xs-12 col-lg-12 text-center">
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-info" style="width: 60%"></div>
+								<div class="valor_avaliacao">
+									<select id="tamanho">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -301,9 +329,16 @@ window.fbAsyncInit = function() {
 							<div class="col-xs-6 col-lg-6 text-right">
 								<h5><span class="badge">5</span></h5>
 							</div>
+
 							<div class="col-xs-12 col-lg-12 text-center">
-								<div class="progress progress-striped">
-									<div class="progress-bar progress-bar-info" style="width: 100%"></div>
+								<div class="valor_avaliacao">
+									<select id="pontualidade">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
 								</div>
 							</div>
 						</div>
@@ -360,10 +395,18 @@ window.fbAsyncInit = function() {
 											</div>
 											<div class="col-xs-6 col-sm-6">
 												<ul class="list-unstyled text-left">
-													<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
-													<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
-													<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
-													<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
+													<li>Sabor: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Preço: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Tamanho: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Pontualidade: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
 												</ul>
 											</div>
 										</div>
@@ -411,10 +454,18 @@ window.fbAsyncInit = function() {
 											</div>
 											<div class="col-xs-6 col-sm-6">
 												<ul class="list-unstyled text-left">
-													<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
-													<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
-													<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
-													<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
+													<li>Sabor: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Preço: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Tamanho: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Pontualidade: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
 												</ul>
 											</div>
 										</div>
@@ -462,10 +513,18 @@ window.fbAsyncInit = function() {
 											</div>
 											<div class="col-xs-6 col-sm-6">
 												<ul class="list-unstyled text-left">
-													<li>Sabor: <span><i class="fa fa-star"></i> 5</span></li>
-													<li>Preço: <span><i class="fa fa-star"></i> 4</span></li>
-													<li>Tamanho: <span><i class="fa fa-star"></i> 4</span></li>
-													<li>Pontualidade: <span><i class="fa fa-star"></i> 3</span></li>
+													<li>Sabor: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Preço: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Tamanho: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
+													<li>Pontualidade: <span>
+													<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+													</span></li>
 												</ul>
 											</div>
 										</div>

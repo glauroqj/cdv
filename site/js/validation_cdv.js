@@ -281,6 +281,16 @@ $(document).ready(function() {
 	$('.avaliacao_prato #sabor, .avaliacao_prato #tamanho, .avaliacao_prato #preco, .avaliacao_prato #pontualidade').barrating({
 		theme: 'fontawesome-stars'
 	});
+
+	$('.conta_cliente #sabor, .conta_cliente #tamanho, .conta_cliente #preco, .conta_cliente #pontualidade').barrating({
+		theme: 'fontawesome-stars',
+		readonly: 'true'
+	});
+
+	$('.conta_cliente #sabor').barrating('set', 4);
+	$('.conta_cliente #preco').barrating('set', 1);
+	$('.conta_cliente #tamanho').barrating('set', 3);
+	$('.conta_cliente #pontualidade').barrating('set', 5);
 	
 	/* end rating plate */
 

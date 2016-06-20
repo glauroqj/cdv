@@ -1008,10 +1008,18 @@
 		margin-bottom: 15px;
 		border: 1px solid #ddd;
 	}
+	.conta_cliente .botoes_conta_cliente .group div > div {
+		margin-bottom: 5px;
+	}
 	/* início controle */
 	.conta_cliente .controle .imagem_usuario img {
 		max-height: 80px;
 		max-width: 80px;
+	}
+	.conta_cliente .valor_avaliacao {
+	}
+	.conta_cliente .valor_avaliacao a:hover {
+		cursor: not-allowed;
 	}
 	.conta_cliente .controle ul li a:hover {
 		color: #f24e4e;
