@@ -180,13 +180,24 @@ $(document).ready(function() {
 	});
 
 	$('.insert_plate #preco_porcao').on('keyup', function(event) {
-		if ( $('.insert_plate #preco_porcao').val().length > 4 ) {
+		var preco_final = $('.insert_plate #preco_porcao').val();
+		if ( $('.insert_plate #preco_porcao').val().length != 0 ) {
 			$('.insert_plate #preco_porcao_final').val(0);
-			var preco_final = $('.insert_plate #preco_porcao').val();
 			preco_final = parseFloat(preco_final.replace(/\,/g, '.'));
 			var acrescimo = preco_final * 10/100;
 			var preco_final_total = preco_final + acrescimo;
 			$('.insert_plate #preco_porcao_final').val(preco_final_total.toFixed(2).split('.'));
+		}
+		if ( $('.insert_plate #preco_porcao').val().length == 0 ) {
+			$('.insert_plate #preco_porcao_final').val(0);
+		}
+	});
+
+	$('.insert_plate #preco_porcao').focusout(function(event) {
+		var preco_final = $('.insert_plate #preco_porcao').val();
+		preco_final = parseFloat(preco_final.replace(/\,/g, '.'));
+		if ( $('.insert_plate #preco_porcao').val().length == 2 ) {
+			$('.insert_plate #preco_porcao').val(preco_final.toFixed(2).split('.'));
 		}
 	});
 
@@ -253,7 +264,7 @@ $(document).ready(function() {
 	$('.phone_us').mask('(000) 000-0000');
 	$('.mixed').mask('AAA 000-S0S');
 	$('.cpf').mask('000.000.000-00', {reverse: true});
-	$('.money').mask('000.000.000.000.000,00', {reverse: true});
+	$('.money').mask("0.000,00", {reverse: true});
 	$('.card_credit').mask('0000-0000-0000-0000');
 	$('.card_date').mask('00/00');
 	$('.quantidade_prato').mask('999');

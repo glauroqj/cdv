@@ -304,14 +304,14 @@ function logOutFacebook() {
 											<label for="select" class="control-label text-center">Preço do Prato</label>
 											<div class="input-group has-feedback form-group">
 												<span class="input-group-addon" id="basic-addon1">R$</span>
-												<input type="text" class="form-control money" placeholder="0,00" name="preco_porcao" id="preco_porcao" required aria-invalid="false">
+												<input type="text" class="form-control money" placeholder="00,00" name="preco_porcao" id="preco_porcao" required aria-invalid="false">
 												<span class="glyphicon form-control-feedback"></span>
 											</div>
 										</div>
 
 										<div class="col-xs-12 col-sm-6 col-md-6">
 											<label for="select" class="control-label text-center">Valor Final do Prato</label>
-											<div class="input-group has-feedback form-group">
+											<div class="input-group has-feedback form-group" data-toggle="tooltip" data-placement="right" title="" data-original-title="Valor corrigido para venda!">
 												<span class="input-group-addon" id="basic-addon1">R$</span>
 												<input type="text" class="form-control money" placeholder="" name="preco_porcao" id="preco_porcao_final" disabled="" aria-invalid="false">
 												<span class="glyphicon form-control-feedback"></span>
@@ -420,10 +420,10 @@ function logOutFacebook() {
 												</label>
 											</div>
 										</div>
-
+<!-- 	
 										<div class="col-xs-12 col-sm-12 col-md-12 adicional_entrega">	
 											<div class="well">
-<!-- 												<div class="row">
+											<div class="row">
 													<div class="col-xs-12 col-sm-6 col-md-6">
 														<label for="select" class="control-label text-left">Horário que se inicia as entregas</label>
 														<div class="form-group has-feedback">
@@ -439,7 +439,7 @@ function logOutFacebook() {
 															<span class="glyphicon form-control-feedback"></span>
 														</div>
 													</div>
-												</div> -->
+												</div> 
 
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-12">
@@ -467,103 +467,51 @@ function logOutFacebook() {
 												</div>
 
 											</div>
-										</div><!-- end adicional entrega -->
-
-										<div class="col-xs-12 col-sm-12 col-md-12">
-											<div class="checkbox text-left">
-												<label>
-													<input type="checkbox">
-													<div class="form-group text-left">
-														<a id="nao_entrega"  type="button" class="btn btn-primary">Cliente deve retirar o prato no local</a>
-													</div>
-												</label>
-											</div>
 										</div>
+									-->
 
-										<div class="col-xs-12 col-sm-12 col-md-12 adicional_cliente_busca">
-											<div class="well">
-												<div class="row">
-<!--
-													<div class="col-xs-12 col-sm-12 col-md-12">
-														<h5 for="select" class="control-label text-center">Horário que o prato estará disponível para retirada <span type="button" class="btn" data-toggle="tooltip" data-placement="right" title="Defina um horário que o cliente poderá buscar a refeição no endereço definido."><span class="badge">?</span></span></h5>
-													</div>
-
-												
-													<div class="col-xs-6 col-sm-6 col-md-6">
-														<label for="select" class="control-label text-center">Data Inicial</label>
-														<div class="form-group has-feedback">
-															<input type="text" class="form-control date" id="buscar_de_data_i" name="buscar_de_data_i" required placeholder="dd/mm/aaaa" aria-invalid="false">
-															<span class="glyphicon form-control-feedback"></span>
-														</div>
-													</div>
-
-													<div class="col-xs-6 col-sm-6 col-md-6">
-														<label for="select" class="control-label text-center">Data Final</label>
-														<div class="form-group has-feedback">
-															<input type="text" class="form-control date" id="buscar_ate_data_i" name="buscar_ate_data_i" required placeholder="dd/mm/aaaa" aria-invalid="false">
-															<span class="glyphicon form-control-feedback"></span>
-														</div>
-													</div>-->
-
-	<!-- 												<div class="col-xs-12 col-sm-6 col-md-6">
-														<label for="select" class="control-label text-center">Hora Inicial</label>
-														<div class="form-group has-feedback">
-															<input type="time" class="form-control" id="buscar_de_hora_i" name="buscar_de_hora_i" required aria-invalid="false">
-															<span class="glyphicon form-control-feedback"></span>
-														</div>
-													</div>
-
-													<div class="col-xs-12 col-sm-6 col-md-6">
-														<label for="select" class="control-label text-center">Hora Final</label>
-														<div class="form-group has-feedback">
-															<input type="time" class="form-control" id="buscar_ate_hora_i" name="buscar_ate_hora_i" required aria-invalid="false">
-															<span class="glyphicon form-control-feedback"></span>
-														</div>
-													</div> -->
-
-													<div class="col-xs-12 col-sm-12 col-md-12 text-left">
-														<div class="form-group radio"> 
-															<label>
-																<input type="radio" name="recip" value="buscar_sem_recipiente" checked="checked"> Fornecerei recipiente com a refeição.
-															</label>
-														</div>
-														<div class="form-group radio"> 
-															<label>
-																<input type="radio" name="recip" value="buscar_com_recipiente"> Cliente deve trazer recipiente para receber refeição.
-															</label>
-														</div>
-
-
-														<!--
-														<div class="form-group">  
-															<input type="checkbox" name="aceita_solicita_prato" id="aceita_solicita_prato" value="1"> Aceito receber solicitações para cozinhar este prato.
-														</div>
-
-														<div class="form-group">  
-															<label for="select" class="control-label text-center">Avise-me quando receber</label>
-															<div class="input-group has-feedback form-group">
-																<span class="input-group-addon" id="basic-addon2">prato(os)</span>
-																<input type="number" class="form-control quantidade_prato" name="serve_num_pessoas" id="serve_num_pessoas" required="" aria-invalid="false">
-																<span class="glyphicon form-control-feedback"></span>
-															</div>
-														</div>-->
-
-													</div>
-												</div><!-- end row -->
-
-											</div>
-										</div><!-- end adicional cliente busca -->
-
-										<div class="col-xs-12 col-sm-12 col-md-12">
-											<div class="checkbox text-left">
-												<label>
-													<input type="checkbox">
-													<div class="form-group text-left">
-														<a id="cliente_local"  type="button" class="btn btn-primary">O cliente pode comer no local</a>
-													</div>
-												</label>
-											</div>
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="checkbox text-left">
+											<label>
+												<input type="checkbox">
+												<div class="form-group text-left">
+													<a id="nao_entrega"  type="button" class="btn btn-primary">Cliente deve retirar o prato no local</a>
+												</div>
+											</label>
 										</div>
+									</div>
+									<!--
+									<div class="col-xs-12 col-sm-12 col-md-12 adicional_cliente_busca">
+										<div class="well">
+											<div class="row">
+
+												<div class="col-xs-12 col-sm-12 col-md-12 text-left">
+													<div class="form-group radio"> 
+														<label>
+															<input type="radio" name="recip" value="buscar_sem_recipiente" checked="checked"> Fornecerei recipiente com a refeição.
+														</label>
+													</div>
+													<div class="form-group radio"> 
+														<label>
+															<input type="radio" name="recip" value="buscar_com_recipiente"> Cliente deve trazer recipiente para receber refeição.
+														</label>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div> -->
+
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="checkbox text-left">
+											<label>
+												<input type="checkbox">
+												<div class="form-group text-left">
+													<a id="cliente_local"  type="button" class="btn btn-primary">O cliente pode comer no local</a>
+												</div>
+											</label>
+										</div>
+									</div>
 
 <!-- 										<div class="col-xs-12 col-sm-12 col-md-12 adicional_cliente_local">
 											<div class="well">
