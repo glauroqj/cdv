@@ -179,27 +179,32 @@ $(document).ready(function() {
 		$('.adicional_cliente_local').toggle(100);
 	});
 
-	$('.insert_plate #preco_porcao').on('keyup', function(event) {
-		var preco_final = $('.insert_plate #preco_porcao').val();
-		if ( $('.insert_plate #preco_porcao').val().length != 0 ) {
-			$('.insert_plate #preco_porcao_final').val(0);
-			preco_final = parseFloat(preco_final.replace(/\,/g, '.'));
-			var acrescimo = preco_final * 10/100;
-			var preco_final_total = preco_final + acrescimo;
-			$('.insert_plate #preco_porcao_final').val(preco_final_total.toFixed(2).split('.'));
-		}
-		if ( $('.insert_plate #preco_porcao').val().length == 0 ) {
-			$('.insert_plate #preco_porcao_final').val(0);
-		}
+	$('.insert_plate #preco_porcao').click(function(event) {
+		$(this).val(0);
 	});
-
+	// modelo para trabalhar com preços
 	$('.insert_plate #preco_porcao').focusout(function(event) {
 		var preco_final = $('.insert_plate #preco_porcao').val();
-		preco_final = parseFloat(preco_final.replace(/\,/g, '.'));
-		if ( $('.insert_plate #preco_porcao').val().length == 2 ) {
-			$('.insert_plate #preco_porcao').val(preco_final.toFixed(2).split('.'));
+		preco_final = parseFloat(preco_final);
+		var preco_final_total = 0;
+
+
+		if ( $('.insert_plate #preco_porcao').val().length >= 4 ) {
+			var acrescimo = preco_final * 10/100;
+			preco_final_total = preco_final + acrescimo;
+			preco_final_total = preco_final_total.toFixed(2);
+			$('.insert_plate #preco_porcao_final').html(preco_final_total);
+		}
+
+		if ( $('.insert_plate #preco_porcao').val().length >= 7 ) {
+			var acrescimo = preco_final * 10/100;
+			preco_final_total = preco_final + acrescimo;
+			preco_final_total = preco_final_total.toFixed(4);
+			$('.insert_plate #preco_porcao_final').html(preco_final_total);
 		}
 	});
+	// documentation http://plentz.github.io/jquery-maskmoney/
+	$('.insert_plate #preco_porcao').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
 	var nome = 1;
 	var valor = 1;
@@ -277,7 +282,7 @@ $(document).ready(function() {
 	/* end unmask on submit */
 
 	/* rating plate */
-	
+
 	$('.avaliacao_prato #sabor, .avaliacao_prato #tamanho, .avaliacao_prato #preco, .avaliacao_prato #pontualidade').barrating({
 		theme: 'fontawesome-stars'
 	});
@@ -291,7 +296,7 @@ $(document).ready(function() {
 	$('.conta_cliente #preco').barrating('set', 1);
 	$('.conta_cliente #tamanho').barrating('set', 3);
 	$('.conta_cliente #pontualidade').barrating('set', 5);
-	
+
 	/* end rating plate */
 
 	/* id modal */

@@ -24,6 +24,7 @@
 	<script src="./js/jquery.mask.js"></script>
 	<script src="./js/validator.min.js"></script>
 	<script src="./js/jquery.barrating.js"></script>
+	<script src="./js/jquery.maskMoney.min.js"></script>
 
 	<!-- Scroll -->
 	<script src="./js/smoothscroll.js"></script>
@@ -304,7 +305,7 @@ function logOutFacebook() {
 											<label for="select" class="control-label text-center">Preço do Prato</label>
 											<div class="input-group has-feedback form-group">
 												<span class="input-group-addon" id="basic-addon1">R$</span>
-												<input type="text" class="form-control money" placeholder="00,00" name="preco_porcao" id="preco_porcao" required aria-invalid="false">
+												<input type="text" class="form-control" placeholder="00,00" name="preco_porcao" id="preco_porcao" required aria-invalid="false">
 												<span class="glyphicon form-control-feedback"></span>
 											</div>
 										</div>
@@ -313,8 +314,7 @@ function logOutFacebook() {
 											<label for="select" class="control-label text-center">Valor Final do Prato</label>
 											<div class="input-group has-feedback form-group" data-toggle="tooltip" data-placement="right" title="" data-original-title="Valor corrigido para venda!">
 												<span class="input-group-addon" id="basic-addon1">R$</span>
-												<input type="text" class="form-control money" placeholder="" name="preco_porcao" id="preco_porcao_final" disabled="" aria-invalid="false">
-												<span class="glyphicon form-control-feedback"></span>
+												<div type="text" class="form-control" placeholder="00,00" name="preco_porcao" id="preco_porcao_final" aria-invalid="false">00,00</div>
 											</div>
 										</div>
 
@@ -413,17 +413,17 @@ function logOutFacebook() {
 										<div class="col-xs-12 col-sm-12 col-md-12">
 											<div class="checkbox text-left">
 												<label>
-													<input type="checkbox">
+													<input type="checkbox" id="faco_entrega">
 													<div class="form-group">
 														<a id="faco_entrega" type="button" class="btn btn-primary">Eu faço a entrega</a>
 													</div>
 												</label>
 											</div>
 										</div>
-<!-- 	
+
 										<div class="col-xs-12 col-sm-12 col-md-12 adicional_entrega">	
 											<div class="well">
-											<div class="row">
+												<div class="row">
 													<div class="col-xs-12 col-sm-6 col-md-6">
 														<label for="select" class="control-label text-left">Horário que se inicia as entregas</label>
 														<div class="form-group has-feedback">
@@ -468,52 +468,51 @@ function logOutFacebook() {
 
 											</div>
 										</div>
-									-->
 
-									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div class="checkbox text-left">
-											<label>
-												<input type="checkbox">
-												<div class="form-group text-left">
-													<a id="nao_entrega"  type="button" class="btn btn-primary">Cliente deve retirar o prato no local</a>
-												</div>
-											</label>
-										</div>
-									</div>
-									<!--
-									<div class="col-xs-12 col-sm-12 col-md-12 adicional_cliente_busca">
-										<div class="well">
-											<div class="row">
-
-												<div class="col-xs-12 col-sm-12 col-md-12 text-left">
-													<div class="form-group radio"> 
-														<label>
-															<input type="radio" name="recip" value="buscar_sem_recipiente" checked="checked"> Fornecerei recipiente com a refeição.
-														</label>
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<div class="checkbox text-left">
+												<label>
+													<input id="nao_entrega" type="checkbox">
+													<div class="form-group text-left">
+														<a id="nao_entrega"  type="button" class="btn btn-primary">Cliente deve retirar o prato no local</a>
 													</div>
-													<div class="form-group radio"> 
-														<label>
-															<input type="radio" name="recip" value="buscar_com_recipiente"> Cliente deve trazer recipiente para receber refeição.
-														</label>
-													</div>
-												</div>
+												</label>
 											</div>
-
 										</div>
-									</div> -->
 
-									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div class="checkbox text-left">
-											<label>
-												<input type="checkbox">
-												<div class="form-group text-left">
-													<a id="cliente_local"  type="button" class="btn btn-primary">O cliente pode comer no local</a>
+										<div class="col-xs-12 col-sm-12 col-md-12 adicional_cliente_busca">
+											<div class="well">
+												<div class="row">
+
+													<div class="col-xs-12 col-sm-12 col-md-12 text-left">
+														<div class="form-group radio"> 
+															<label>
+																<input type="radio" name="recip" value="buscar_sem_recipiente" checked="checked"> Fornecerei recipiente com a refeição.
+															</label>
+														</div>
+														<div class="form-group radio"> 
+															<label>
+																<input type="radio" name="recip" value="buscar_com_recipiente"> Cliente deve trazer recipiente para receber refeição.
+															</label>
+														</div>
+													</div>
 												</div>
-											</label>
-										</div>
-									</div>
 
-<!-- 										<div class="col-xs-12 col-sm-12 col-md-12 adicional_cliente_local">
+											</div>
+										</div>
+
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<div class="checkbox text-left">
+												<label>
+													<input id="cliente_local" type="checkbox">
+													<div class="form-group text-left">
+														<a id="cliente_local"  type="button" class="btn btn-primary">O cliente pode comer no local</a>
+													</div>
+												</label>
+											</div>
+										</div>
+
+										<div class="col-xs-12 col-sm-12 col-md-12 adicional_cliente_local">
 											<div class="well">
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-12">
@@ -538,7 +537,7 @@ function logOutFacebook() {
 
 												</div>
 											</div>
-										</div> -->
+										</div>
 
 									</div><!-- end row escolhas -->
 

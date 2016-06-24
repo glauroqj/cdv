@@ -1451,18 +1451,18 @@
 	.btn_cdv {
 		color: #ffffff;
 		background-color: #F24E4E;
-		border-color: #D84646;
+		border-color: #B23939;
 	}
 	.btn_cdv:hover, .btn_cdv:focus, .btn-group.open .dropdown-toggle.btn_cdv {
-		background-color: #FF5252;
-		border-color: #E54A4A;
+		background-color: #F24E4E;
+		border-color: #B23939;
 		color: #ffffff;
 
 	}
 	.btn_cdv:active, .btn_cdv.active, .open > .dropdown-toggle.btn_cdv {
 		color: #ffffff;
-		background-color: #B23939;
-		border-color: #722525;
+		background-color: #F24E4E;
+		border-color: #B23939;
 	}
 
 	.btn_facebook {
