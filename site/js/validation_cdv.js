@@ -180,31 +180,45 @@ $(document).ready(function() {
 	});
 
 	$('.insert_plate #preco_porcao').click(function(event) {
-		$(this).val(0);
+		// $(this).val(0);
 	});
 	// modelo para trabalhar com preços
-	$('.insert_plate #preco_porcao').focusout(function(event) {
-		var preco_final = $('.insert_plate #preco_porcao').val();
-		preco_final = parseFloat(preco_final);
-		var preco_final_total = 0;
+	var preco_final;
+	var acrescimo = 0;
+	var preco_final_total = 0;
 
+	function preco_prato() {
+		preco_final = parseFloat( $('.insert_plate #preco_porcao').val() );
+	}
+
+	function calcular_novo_preco() {
+		
+		// acrescimo = acrescimo.toString().replace(/\./g, ',');
+		// acrescimo = parseFloat( acrescimo )
+		
 
 		if ( $('.insert_plate #preco_porcao').val().length >= 4 ) {
-			var acrescimo = preco_final * 10/100;
-			preco_final_total = preco_final + acrescimo;
+			acrescimo = preco_final * 10/100;
+			preco_final_total = acrescimo + preco_final;
 			preco_final_total = preco_final_total.toFixed(2);
 			$('.insert_plate #preco_porcao_final').html(preco_final_total);
 		}
-
 		if ( $('.insert_plate #preco_porcao').val().length >= 7 ) {
-			var acrescimo = preco_final * 10/100;
-			preco_final_total = preco_final + acrescimo;
-			preco_final_total = preco_final_total.toFixed(4);
+			acrescimo = preco_final * 10/100;
+			preco_final_total = acrescimo + preco_final;
+			preco_final_total = preco_final_total.toFixed(5);
 			$('.insert_plate #preco_porcao_final').html(preco_final_total);
 		}
+	}
+
+	$('.insert_plate #preco_porcao').focusout(function(event) {
+		preco_prato();
+		calcular_novo_preco();
+		console.log(preco_final, acrescimo, preco_final_total);
+
 	});
 	// documentation http://plentz.github.io/jquery-maskmoney/
-	$('.insert_plate #preco_porcao').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+	// $('.insert_plate #preco_porcao').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
 	var nome = 1;
 	var valor = 1;
@@ -269,7 +283,7 @@ $(document).ready(function() {
 	$('.phone_us').mask('(000) 000-0000');
 	$('.mixed').mask('AAA 000-S0S');
 	$('.cpf').mask('000.000.000-00', {reverse: true});
-	$('.money').mask("0.000,00", {reverse: true});
+	$('.money').mask('000.000.00', {reverse: true});
 	$('.card_credit').mask('0000-0000-0000-0000');
 	$('.card_date').mask('00/00');
 	$('.quantidade_prato').mask('999');

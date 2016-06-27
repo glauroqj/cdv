@@ -305,16 +305,16 @@ function logOutFacebook() {
 											<label for="select" class="control-label text-center">Preço do Prato</label>
 											<div class="input-group has-feedback form-group">
 												<span class="input-group-addon" id="basic-addon1">R$</span>
-												<input type="text" class="form-control" placeholder="00,00" name="preco_porcao" id="preco_porcao" required aria-invalid="false">
+												<input type="text" class="form-control money" placeholder="00,00" name="preco_porcao" id="preco_porcao" required aria-invalid="false">
 												<span class="glyphicon form-control-feedback"></span>
 											</div>
 										</div>
 
 										<div class="col-xs-12 col-sm-6 col-md-6">
 											<label for="select" class="control-label text-center">Valor Final do Prato</label>
-											<div class="input-group has-feedback form-group" data-toggle="tooltip" data-placement="right" title="" data-original-title="Valor corrigido para venda!">
+											<div class="input-group has-feedback form-group text-left" data-toggle="tooltip" data-placement="right" title="" data-original-title="Valor corrigido para venda!">
 												<span class="input-group-addon" id="basic-addon1">R$</span>
-												<div type="text" class="form-control" placeholder="00,00" name="preco_porcao" id="preco_porcao_final" aria-invalid="false">00,00</div>
+												<div type="text" class="form-control money" placeholder="00,00" name="preco_porcao" id="preco_porcao_final" disabled aria-invalid="false">00,00</div>
 											</div>
 										</div>
 
