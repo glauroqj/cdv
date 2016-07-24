@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	window.sr = new scrollReveal();
 
 	/* modal */
@@ -134,7 +134,7 @@ $(document).ready(function() {
     	$(".image-preview-input-title").text("Escolha..."); 
     }); 
     // Create the preview image
-    $(".image-preview-input input:file").change(function (){     
+    $('.image-preview-input input:file').change(function (){     
     	var img = $('<img/>', {
     		id: 'dynamic',
     		width:250,
@@ -146,12 +146,12 @@ $(document).ready(function() {
         reader.onload = function (e) {
         	$(".image-preview-input-title").text("Trocar");
         	$(".image-preview-clear").show();
-        	$(".image-preview-filename").val(file.name);            
+        	$(".image-preview-filename").val(file.name);
         	img.attr('src', e.target.result);
         	$(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-        }        
+        }
         reader.readAsDataURL(file);
-    });  
+    });
 });
 	/* upload image profile cook */
 
@@ -159,9 +159,7 @@ $(document).ready(function() {
 
 	$('form').validator();
 
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip()
-	});
+
 	/* end validation forms */
 
 
@@ -192,10 +190,8 @@ $(document).ready(function() {
 	}
 
 	function calcular_novo_preco() {
-		
 		// acrescimo = acrescimo.toString().replace(/\./g, ',');
 		// acrescimo = parseFloat( acrescimo )
-		
 
 		if ( $('.insert_plate #preco_porcao').val().length >= 4 ) {
 			acrescimo = preco_final * 10/100;
@@ -271,6 +267,20 @@ $(document).ready(function() {
 	});
 	/* end cadstro prato */
 
+	/* inserir imagem prato */
+	$(function() {
+		$('.image-editor').cropit();
+
+		$('form').submit(function() {
+			var imageData = $('.image-editor').cropit('export');
+			$('.hidden-image-data').val(imageData);
+
+			var formValue = $(this).serialize();
+			$('#result-data').text(formValue);
+
+			return false;
+		});
+	});
 	/* mask forms */
 	$('.date').mask('99/99/9999');
 	$('.time').mask('00:00:00');
